@@ -1,8 +1,6 @@
 **TARIDE**
 
-Trust and Authentication Registry
-
-for Integrity in Digital Europe
+Trust and Authentication Registry for Integrity in Digital Europe
 
 *An open, European protocol for trust without identification*
 
