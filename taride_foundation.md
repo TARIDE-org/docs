@@ -19,7 +19,7 @@ Trust in digital communications is collapsing. In the Netherlands, an estimated 
 TARIDE - the Trust and Authentication Registry for Integrity in Digital Europe - is an open protocol that solves this at the infrastructure level. It enables any party to verify that a communication comes from a registered source, without requiring or revealing personal information.
 
 **The core principle: anonymity by default, identification by choice.**
-This is TARIDE’s fundamental differentiator. Existing solutions (STIR/SHAKEN, Truecaller, Hiya) and industry proposals (GSMA’s eIDAS 2.0 framework) require or incentivise identification as a precondition for trust. TARIDE inverts this: verification is the default, identification is optional. A private individual can prove their phone number is registered without disclosing their name. A business can choose to add its KvK registration, banking licence, or other credentials. The user controls how far along the spectrum from anonymous to fully identified they go.
+This is TARIDE’s fundamental differentiator. Existing solutions (STIR/SHAKEN, Truecaller, Hiya) and industry initiatives (the GSMA Open Gateway / CAMARA API ecosystem) require or incentivise identification as a precondition for trust. TARIDE inverts this: verification is the default, identification is optional. A private individual can prove their phone number is registered without disclosing their name. A business can choose to add its KvK registration, banking licence, or other credentials. The user controls how far along the spectrum from anonymous to fully identified they go.
 
 ## Five protocol layers
 
@@ -60,6 +60,10 @@ Parts of this problem have been addressed before. STIR/SHAKEN, mandated for US c
 **It suffers from a cold-start problem.** A verification protocol is only useful if parties register on it and applications query it. Neither side moves if the other is empty. Breaking this deadlock requires three parallel moves: a consumer application (Calmido) that provides the first users and demonstrates demand; at least one telecom partner that commits to operating a resolver node and issuing credentials; and a public communications strategy that frames the protocol as an industry initiative rather than a single company’s project. The telecom partner is the critical dependency - without a resolver, the protocol cannot issue credentials, and without credentials, the app has nothing to display.
 
 **It does not fit conventional business models.** An open protocol governed by a foundation is not attractive to venture capital. The commercial solutions that do exist - Truecaller, Hiya - generate revenue by collecting and monetising user contact data, which is precisely the model that a trust protocol should avoid. There was no financial incentive to build it the right way.
+
+**The closest parallel is emerging but incomplete.** The GSMA Open Gateway initiative, launched in 2023 and now supported by more than 79 mobile operators worldwide, exposes standardised network APIs through the CAMARA open-source project (Linux Foundation). CAMARA already includes APIs directly relevant to trust and fraud prevention: SIM Swap detection, Number Verification, Verified Caller, Number Recycling, and several Know Your Customer variants. In the Netherlands, the industry association COIN coordinates the national implementation of CAMARA APIs and operates shared infrastructure for number portability, identity management, and fraud prevention across all Dutch operators.
+
+These APIs are valuable but fundamentally transactional: an application asks a question ("was this number recently ported?") and receives an answer. There is no persistent trust layer, no time-based reputation, no user-sovereign identity, and no cross-operator view. Each API call is stateless. TARIDE is designed to complement - not compete with - this ecosystem. The protocol can consume CAMARA APIs as inputs (for example, using SIM Swap data as a credential metadata field, or Number Verification as part of continuous validation) while providing the persistent, cross-operator trust layer that individual API calls cannot deliver.
 
 The conditions have now converged: the regulation (eIDAS 2.0), the technology (DIDs, verifiable credentials, zero-knowledge proofs), the urgency (AI-driven fraud), and a party willing to build it from a foundation model rather than a commercial one.
 
@@ -193,7 +197,7 @@ The distinction matters in practice. A company may own fifty phone numbers (cont
 
 ### Continuous validation
 
-A static credential confirms that a number was verified at a specific point in time. For higher-assurance scenarios, the protocol supports continuous validation through silent re-authentication: each time the credential is presented or a communication occurs, the application can verify in real time with the mobile network that the number is still active and still associated with the same SIM card. This uses existing telecom infrastructure (GSMA Number Verify / CAMARA standards) and happens invisibly to the user - no codes, no pop-ups, no interaction required. The MNO effectively provides an ongoing, real-time attestation rather than a one-time snapshot.
+A static credential confirms that a number was verified at a specific point in time. For higher-assurance scenarios, the protocol supports continuous validation through silent re-authentication: each time the credential is presented or a communication occurs, the application can verify in real time with the mobile network that the number is still active and still associated with the same SIM card. This uses existing telecom infrastructure - specifically the CAMARA Number Verification API, part of the GSMA Open Gateway ecosystem - and happens invisibly to the user: no codes, no pop-ups, no interaction required. The CAMARA SIM Swap API can serve a complementary role, providing the `last_sim_swap` metadata field referenced in the credential specification below.The MNO effectively provides an ongoing, real-time attestation rather than a one-time snapshot.
 
 Silent re-authentication provides a strong defence against SIM swap attacks: even if an attacker obtains a replacement SIM, the re-authentication will fail against the DID holder’s original credential. It requires an active network connection and telecom integration, making it an optional enhancement rather than a protocol requirement. For the proof of concept, static credentials with periodic renewal are sufficient.
 
@@ -493,7 +497,13 @@ Europe has both the regulatory framework and the political momentum to build an 
 
 TARIDE is designed to operate within and complement this regulatory environment. The protocol is built on EVM-compatible smart contracts, enabling deployment on EBSI when it reaches production readiness. The architecture supports the European Digital Identity Wallet as an authentication mechanism. And the open governance model aligns with European principles of digital sovereignty and democratic oversight.
 
-The direction is validated by industry. The GSMA - representing the global mobile industry - published a whitepaper in 2023 proposing the mobile number as a Qualified Electronic Attribute Attestation (QEAA) within eIDAS 2.0 wallets \[6\]. Their proposal confirms the core premise: that telecom providers are the authoritative source for number verification, and that verifiable credentials are the right mechanism. TARIDE builds on this foundation, extending it from a telecom-centric authentication tool to a broader, user-sovereign trust protocol for all digital communications.
+The direction is validated by industry momentum on multiple fronts. The GSMA, representing more than 750 mobile operators globally published a whitepaper in 2023 proposing the mobile number as a Qualified Electronic Attribute Attestation (QEAA) within eIDAS 2.0 wallets [6]. Their proposal confirms the core premise: that telecom providers are the authoritative source for number verification, and that verifiable credentials are the right mechanism.
+
+In parallel, the GSMA Open Gateway initiative (launched 2023, now covering 79+ operators across 85 countries) and the CAMARA open-source project (Linux Foundation) are building a standardised API layer for network capabilities. CAMARA's Authentication and Fraud Prevention API family, including SIM Swap, Number Verification, Verified Caller, and Number Recycling addresses individual trust signals that TARIDE integrates into a persistent, cross-operator trust profile. The TM Forum complements this with operational APIs for monetisation and service management. TARIDE is designed to sit on top of this emerging stack: consuming CAMARA APIs as verification inputs, while providing the DID-based identity layer, time-based reputation, and consent framework that the API ecosystem does not address.
+
+In the Netherlands specifically, Vereniging COIN, the cooperative association of all Dutch telecom operators provides a unique foundation. COIN operates the shared infrastructure for number portability, the CAMARA Discovery Service (routing verification requests to the correct operator), identity management services, the SMS Sender ID Register, and the cross-operator fraud prevention framework. This existing infrastructure maps closely to the TARIDE resolver concept and makes the Netherlands an ideal proving ground for the protocol.
+
+TARIDE builds on all of this, extending it from a set of individual telecom APIs and national coordination mechanisms to a broader, user-sovereign, pan-European trust protocol for all digital communications.
 
 This is not merely a technical distinction. It represents a fundamentally different approach to trust infrastructure: publicly governed, anonymous by default, and designed to verify communications without surveilling citizens.
 
@@ -677,6 +687,10 @@ The TARIDE protocol requires a multi-stakeholder ecosystem to function. The foun
 
 Service providers are essential to the protocol. Telecom operators are the only parties that can authoritatively confirm number ownership and, where legally required, disclose subscriber information to authorities. A partnership with at least one Dutch telecom provider is a prerequisite for the pilot phase. As the protocol extends to other channels, email providers and messaging platforms take on equivalent verification roles. Chambers of commerce (KvK), financial regulators, and government agencies serve as optional credential issuers for those DID holders who choose to be identifiable.
 
+## Ecosystem partner
+
+Rather than approaching telecom providers individually, ecosystem partners provide a single coordination point. In the Netherlands, COIN already operates the infrastructure that a TARIDE resolver would require: number portability data, operator routing, identity management, and fraud intelligence. A partnership with COIN could enable the first resolver node to operate on top of existing shared infrastructure, significantly reducing the technical and commercial barriers for individual operators.
+
 ## Technology partners
 
 Research institutions and companies working on decentralised identity, verifiable credentials, and privacy-preserving computation. Relevant existing collaborations include the TNO, and academic research groups focused on digital identity.
@@ -756,6 +770,12 @@ Amsterdam, the Netherlands
 
 **\[9\]** European Commission, *Report on the functioning of the EECC*, January 2026. Followed by the Digital Networks Act (DNA) proposal to replace the Code.
 
+**[10]** CAMARA Project (Linux Foundation), *Network API specifications*, 2022-present. Open-source API definitions for telecom network capabilities. camaraproject.org
+
+**[11]** GSMA, *Open Gateway Initiative*, launched February 2023. Standardised API framework supported by 79+ operators across 85 countries. gsma.com/solutions-and-impact/gsma-open-gateway
+
+**[12]** Vereniging COIN, *Industry association of Dutch telecom operators*. Operates shared infrastructure for number portability, identity management, CAMARA implementation, and fraud prevention. coin.nl
+
 # Version history
 
-**v0.3 → v0.4 (March 2026).** Renamed Verification layer to Registration layer and Credential layer to Verification layer to better reflect what each layer does. Replaced credential age with two core time dimensions (DID age, association age) plus a separate metadata field (last resolver change). Updated all diagrams accordingly.
+**v0.3 → v0.4 (March 2026).** Renamed Verification layer to Registration layer and Credential layer to Verification layer to better reflect what each layer does. Replaced credential age with two core time dimensions (DID age, association age) plus a separate metadata field (last resolver change). Updated all diagrams accordingly. Added positioning relative to GSMA Open Gateway, CAMARA API ecosystem, and TM Forum. Added Vereniging COIN as ecosystem context for the Netherlands pilot market.
