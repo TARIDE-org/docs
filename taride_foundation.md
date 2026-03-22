@@ -580,9 +580,9 @@ An open protocol only succeeds if every participant has a reason to join. The fo
 
 ## End users
 
-The direct incentive is straightforward: knowing who is calling. Less spam, less uncertainty, less time spent screening. The protocol strengthens a promise that apps like Calmido already make, by grounding it in verified credentials rather than crowdsourced databases alone. Participation costs the user nothing - the app handles everything. The threshold is zero.
+The direct incentive is straightforward: knowing who is calling. Less spam, less uncertainty, less time spent screening. The protocol strengthens a promise that apps like Calmido already make, by grounding it in verified credentials rather than crowdsourced databases alone. Participation costs the user nothing as the app handles everything. The threshold is zero.
 
-Users also contribute to the reputation layer by providing feedback after calls. This improves the experience for all other users. Realistically, this works only if feedback requires minimal effort - one tap after a call, not a form. That is a UX design challenge, not a protocol challenge.
+Users also contribute to the reputation layer by providing feedback after calls. This improves the experience for all other users. Realistically, this works only if feedback requires minimal effort, one tap after a call, not a form. That is a UX design challenge, not a protocol challenge.
 
 ## Government and public institutions
 
@@ -608,10 +608,10 @@ The government does not pay for the protocol. The incentive is achieving policy 
 
 ## Resolver operators
 
-In the proof of concept, the foundation operates the resolver. In production, the network requires multiple independent operators - comparable to DNS. The question is: why would a party like KPN run a resolver node?
+In the proof of concept, the foundation operates the resolver. In production, the network requires multiple independent operators, comparable to DNS. The question is: why would a party like KPN run a resolver node?
 
 - **Competitive advantage.** A telecom that operates a resolver can
-  offer its customers a better call experience - verified caller
+  offer its customers a better call experience: verified caller
   information as a network feature, not just an app feature.
 
 - **Protocol fees.** The protocol can charge a small fee per lookup,
@@ -619,7 +619,7 @@ In the proof of concept, the foundation operates the resolver. In production, th
   daily), this creates a viable revenue stream.
 
 - **Fraud intelligence.** A resolver operator sees anonymised patterns
-  in lookup activity and reputation data - valuable for fraud detection
+  in lookup activity and reputation data, valuable for fraud detection
   and network security.
 
 - **Regulatory positioning.** If regulation moves towards mandatory
@@ -628,11 +628,11 @@ In the proof of concept, the foundation operates the resolver. In production, th
 
 ## Credential issuers
 
-Telecom providers, chambers of commerce, and sector regulators that issue credentials. Their incentive is that the protocol digitalises and extends a verification role they already perform. The KvK already verifies that businesses exist - the protocol makes that verification machine-readable and available in real time. Telecoms already verify number ownership internally - the protocol makes it visible beyond their own network. A fee per issued or renewed credential creates a new revenue stream for a service they are already providing.
+Telecom providers, chambers of commerce, and sector regulators that issue credentials. Their incentive is that the protocol digitalises and extends a verification role they already perform. The KvK already verifies that businesses exist, the protocol makes that verification machine-readable and available in real time. Telecoms already verify number ownership internally, the protocol makes it visible beyond their own network. A fee per issued or renewed credential creates a new revenue stream for a service they are already providing.
 
 ## The blockchain layer
 
-The chain runs on existing infrastructure. In the proof of concept, an Ethereum testnet (Sepolia, free). In production, a Layer-2 network or [EBSI](https://ec.europa.eu/digital-building-blocks/sites/spaces/EBSI/pages/447687044/Home). The incentive structure depends on the choice: on a public L2 (Arbitrum, Optimism), gas fees are paid to validators under an existing economic model. On EBSI, the network is permissioned by the EU with no gas fees. The foundation does not need to design its own blockchain incentive model - it uses whatever model exists on the chosen chain. The key requirement is that transaction costs remain low enough for the protocol to scale.
+The chain runs on existing infrastructure. In the proof of concept, an Ethereum testnet (Sepolia, free). In production, a Layer-2 network or [EBSI](https://ec.europa.eu/digital-building-blocks/sites/spaces/EBSI/pages/447687044/Home). The incentive structure depends on the choice: on a public L2 (Arbitrum, Optimism), gas fees are paid to validators under an existing economic model. On EBSI, the network is permissioned by the EU with no gas fees. The foundation does not need to design its own blockchain incentive model, it uses whatever model exists on the chosen chain. The key requirement is that transaction costs remain low enough for the protocol to scale.
 
 ## Other stakeholders
 
@@ -676,7 +676,7 @@ The foundation’s revenue model evolves with the protocol’s maturity. In the 
 
 - **Certification and compliance services.** As the protocol matures,
   the foundation can certify resolver operators, audit credential
-  issuers, and provide compliance tooling - creating a service layer
+  issuers, and provide compliance tooling, creating a service layer
   around the open protocol.
 
 # Partnerships and collaboration
@@ -685,7 +685,7 @@ The TARIDE protocol requires a multi-stakeholder ecosystem to function. The foun
 
 ## Service providers
 
-Service providers are essential to the protocol. Telecom operators are the only parties that can authoritatively confirm number ownership and, where legally required, disclose subscriber information to authorities. A partnership with at least one Dutch telecom provider is a prerequisite for the pilot phase. As the protocol extends to other channels, email providers and messaging platforms take on equivalent verification roles. Chambers of commerce (KvK), financial regulators, and government agencies serve as optional credential issuers for those DID holders who choose to be identifiable.
+Service providers are essential to the protocol. Telecom operators are the only parties that can authoritatively confirm number ownership and, where legally required, disclose subscriber information to authorities. A partnership with at least one Dutch telecom provider is a prerequisite for the pilot phase. As the protocol extends to other channels, email providers and messaging platforms take on equivalent verification roles. Chambers of commerce (KvK), financial regulators (DNB), and government agencies serve as optional credential issuers for those DID holders who choose to be identifiable.
 
 ## Ecosystem partner
 
@@ -693,7 +693,7 @@ Rather than approaching telecom providers individually, ecosystem partners provi
 
 ## Technology partners
 
-Research institutions and companies working on decentralised identity, verifiable credentials, and privacy-preserving computation. Relevant existing collaborations include the TNO, and academic research groups focused on digital identity.
+Research institutions and companies working on decentralised identity, verifiable credentials, and privacy-preserving computation. Relevant existing collaborations include the TNO SSI Lab, and academic research groups focused on digital identity.
 
 ## Application developers
 
@@ -740,8 +740,7 @@ Concrete opportunities for involvement:
 
 **Contact**
 
-Leonard Wolters & Martin Voorzanger
-
+Martin Voorzanger & Leonard Wolters
 TARIDE Foundation (in formation)
 
 Amsterdam, the Netherlands
