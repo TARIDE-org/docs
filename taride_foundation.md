@@ -493,11 +493,11 @@ Any app that supports the TARIDE protocol queries the same resolver and receives
 
 The global trust infrastructure for digital communications is currently dominated by proprietary, primarily American systems. Caller ID databases, spam detection services, and identity verification platforms are operated by commercial entities whose business models depend on aggregating and monetising user data.
 
-Europe has both the regulatory framework and the political momentum to build an alternative. The eIDAS 2.0 regulation mandates EU-wide digital identity infrastructure by 2026. The European Electronic Communications Code (EECC) governs number portability and switching across all 27 Member States \[8\], and its successor - the Digital Networks Act - was proposed in January 2026 \[9\]. The European Blockchain Services Infrastructure (EBSI) provides a foundation for decentralised identity applications. The AI Act establishes guardrails for algorithmic decision-making. And the GDPR provides the privacy baseline that any trust infrastructure must respect.
+Europe has both the regulatory framework and the political momentum to build an alternative. The eIDAS 2.0 regulation mandates EU-wide digital identity infrastructure by 2026. The European Electronic Communications Code (EECC) governs number portability and switching across all 27 Member States \[8\], and its successor, the Digital Networks Act (DNA) was proposed in January 2026 \[9\]. The European Blockchain Services Infrastructure (EBSI) provides a foundation for decentralised identity applications. The EU AI Act establishes guardrails for algorithmic decision-making. And the GDPR provides the privacy baseline that any trust infrastructure must respect.
 
-TARIDE is designed to operate within and complement this regulatory environment. The protocol is built on EVM-compatible smart contracts, enabling deployment on EBSI when it reaches production readiness. The architecture supports the European Digital Identity Wallet as an authentication mechanism. And the open governance model aligns with European principles of digital sovereignty and democratic oversight.
+TARIDE is designed to operate within and complement this regulatory environment. The protocol is built on Ethereum Virtual Machine (EVM) compatible smart contracts, enabling deployment on EBSI when it reaches production readiness. The architecture supports the European Digital Identity Wallet as an authentication mechanism. And the open governance model aligns with European principles of digital sovereignty and democratic oversight.
 
-The direction is validated by industry momentum on multiple fronts. The GSMA, representing more than 750 mobile operators globally published a whitepaper in 2023 proposing the mobile number as a Qualified Electronic Attribute Attestation (QEAA) within eIDAS 2.0 wallets [6]. Their proposal confirms the core premise: that telecom providers are the authoritative source for number verification, and that verifiable credentials are the right mechanism.
+The direction is validated by industry momentum on multiple fronts. The GSM Association (GSMA), representing more than 750 mobile operators globally published a whitepaper in 2023 proposing the mobile number as a Qualified Electronic Attribute Attestation (QEAA) within eIDAS 2.0 wallets [6]. Their proposal confirms the core premise: that telecom providers are the authoritative source for number verification, and that verifiable credentials are the right mechanism.
 
 In parallel, the GSMA Open Gateway initiative (launched 2023, now covering 79+ operators across 85 countries) and the CAMARA open-source project (Linux Foundation) are building a standardised API layer for network capabilities. CAMARA's Authentication and Fraud Prevention API family, including SIM Swap, Number Verification, Verified Caller, and Number Recycling addresses individual trust signals that TARIDE integrates into a persistent, cross-operator trust profile. The TM Forum complements this with operational APIs for monetisation and service management. TARIDE is designed to sit on top of this emerging stack: consuming CAMARA APIs as verification inputs, while providing the DID-based identity layer, time-based reputation, and consent framework that the API ecosystem does not address.
 
@@ -516,12 +516,12 @@ The relationship between the foundation and the company is deliberately structur
 | **TARIDE Foundation**                             | **Calmido B.V.**                                               |
 |---------------------------------------------------|----------------------------------------------------------------|
 | Develops and governs the open protocol            | Builds commercial applications on the protocol                 |
-| Non-profit, foundation structure                  | Commercial entity, foundation-controlled                       |
+| Non-profit, foundation structure                  | Commercial entity                                              |
 | Open-source specifications and reference code     | Proprietary user experience and product features               |
 | Funded by grants, partnerships, and protocol fees | Funded by subscriptions and service fees                       |
-| Multi-stakeholder governance                      | Foundation holds blocking rights on mission-critical decisions |
+| Multi-stakeholder governance                      |                                                                |
 
-This separation ensures that the trust infrastructure remains a public good, while commercial innovation can thrive on top of it. Any party - telecom operators, app developers, government services - can build on the TARIDE protocol under the same conditions as Calmido.
+This separation ensures that the trust infrastructure remains a public good, while commercial innovation can thrive on top of it. Any party such as telecom operators, app developers, government services can build on the TARIDE protocol under the same conditions as Calmido.
 
 In the early stages, Calmido is the only application implementing the protocol and the primary source of users. This creates a dependency that the foundation actively manages by involving telecom partners as co-stakeholders from the proof of concept phase onwards. Telecoms that operate resolver nodes and participate in governance have a direct interest in the protocol’s success that is independent of Calmido’s commercial trajectory. As additional applications integrate the protocol, the ecosystem diversifies and the dependency on any single application diminishes.
 
@@ -529,7 +529,7 @@ In the early stages, Calmido is the only application implementing the protocol a
 
 | **Phase**               | **Scope**                                                                                                                                                                         | **Timeline**    | **Key milestones**                                                   |
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|----------------------------------------------------------------------|
-| **1. Proof of concept** | Core protocol on Ethereum testnet. DID registry, credential issuance, reputation feedback, resolver API. Integrated in Calmido app. Acquisition of first resolver node operators. | Q2-Q3 2026      | Working end-to-end demo; letters of intent from resolver operators   |
+| **1. Proof of concept** | Core protocol on Ethereum Sepolia testnet. DID registry, credential issuance, reputation feedback, resolver API. Integrated in Calmido app. Acquisition of first resolver node operators. | Q2-Q3 2026      | Working end-to-end demo; letters of intent from resolver operators   |
 | **2. Pilot**            | First real-world verifiers (KvK, telecom partner). Privacy layer (ZK-proofs). Expanded resolver network.                                                                          | Q4 2026-Q2 2027 | First organisation live on protocol; privacy-preserving verification |
 | **3. Production**       | L2 or EBSI deployment. Multi-channel support. Distributed resolver network. Open API for third-party applications.                                                                | Q3 2027-Q4 2028 | Production-grade infrastructure; third-party integrations            |
 | **4. Scale**            | Cross-border operations. European Digital Identity Wallet integration. Governance expansion.                                                                                      | 2029-2031       | Pan-European coverage; self-sustaining ecosystem                     |
@@ -562,7 +562,7 @@ The foundation board includes representation from:
 - The foundation cannot be sold, acquired, or merged with a commercial
   entity.
 
-- Protocol specifications remain open-source under permissive licensing.
+- Protocol specifications remain open-source under permissive licensing (Apache License 2.0).
 
 - Revenue from protocol fees is reinvested in protocol development and
   ecosystem growth.
