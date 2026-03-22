@@ -1,4 +1,4 @@
-**TARIDE**
+**TARIDE - Foundation document**
 
 Trust and Authentication Registry for Integrity in Digital Europe
 
@@ -14,7 +14,7 @@ Published under Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 # Executive summary
 
-Trust in digital communications is collapsing. In the Netherlands, an estimated €1.75 billion was lost to scams in 2024. One in seven citizens was affected. The Odido data breach in February 2026 - exposing 6.2 million customer records - demonstrated that centralised telecom infrastructure is itself a target. Meanwhile, AI-generated voice cloning and synthetic identities are making traditional defences (call blockers, spam filters, static databases) increasingly ineffective.
+Trust in digital communications is collapsing. In the Netherlands, an estimated €1.75 billion was lost to scams in 2024. One in seven citizens was affected. The Odido data breach in February 2026, exposing 6.2 million customer records demonstrated that centralised telecom infrastructure is itself a target. Meanwhile, AI-generated voice cloning and synthetic identities are making traditional defences (call blockers, spam filters, static databases) increasingly ineffective.
 
 TARIDE - the Trust and Authentication Registry for Integrity in Digital Europe - is an open protocol that solves this at the infrastructure level. It enables any party to verify that a communication comes from a registered source, without requiring or revealing personal information.
 
@@ -23,19 +23,19 @@ This is TARIDE’s fundamental differentiator. Existing solutions (STIR/SHAKEN, 
 
 ## Five protocol layers
 
-The protocol operates through five layers. The **registration layer** establishes self-sovereign decentralised identifiers (DIDs). The **verification layer** enables service providers to confirm ownership of communication instances (phone numbers, email addresses, messaging handles) without revealing personal data. The **reputation layer** aggregates community feedback on opted-in organisations. The **consent layer** lets recipients define in advance who can reach them - from open to verified to contacts only. The **resolver network** serves all of this in real time, with sub-500ms lookups suitable for incoming call scenarios.
+The protocol operates through five layers. The **1. registration layer** establishes self-sovereign decentralised identifiers (DIDs). The **2. verification layer** enables service providers to confirm ownership of communication instances (phone numbers, email addresses, messaging handles) without revealing personal data. The **3. reputation layer** aggregates community feedback on opted-in organisations. The **4. consent layer** lets recipients define in advance who can reach them, from open to verified to contacts only. The **5. resolver network** serves all of this in real time, with sub-500ms lookups suitable for incoming call scenarios.
 
 ## Time as trust
 
-The protocol’s most powerful anti-spam mechanism is unforgeable: time. Two independent timestamps — DID age and instance-DID association age — form a trust profile that no attacker can fake. A separate metadata field (last resolver change) flags recent portability or provider switches. Creating a new identity is free. Building trust takes months. This makes spam economically unattractive without requiring identification.
+The protocol’s most powerful anti-spam mechanism is unforgeable: time. Two independent timestamps — DID age and instance-DID association age form a trust profile that no attacker can fake. A separate metadata field (last resolver change) flags recent portability or provider switches. Creating a new identity is free. Building trust takes months. This makes spam economically unattractive without requiring identification.
 
 ## Why a foundation
 
-Trust infrastructure cannot be owned by a commercial entity. TARIDE is structured as a Dutch foundation: open-source, mission-protected, multi-stakeholder governed and aligned with European values. The protocol is designed to complement eIDAS 2.0, EBSI, and the European Digital Identity Wallet.
+Trust infrastructure cannot be owned by a commercial entity. TARIDE is structured as a Dutch foundation: open-source, mission-protected, multi-stakeholder governed and aligned with European values. The protocol is designed to complement eIDAS 2.0, European Blockchain Services Infrastructure (EBSI), and the European Digital Identity Wallet.
 
 ## Roadmap
 
-Proof of concept in Q2-Q3 2026 (core protocol on Ethereum testnet, integrated in the Calmido app, acquisition of first resolver node operators). Pilot with a first telecom partner and KvK integration in Q4 2026-Q2 2027. Production deployment on L2 or EBSI in Q3 2027-Q4 2028. Pan-European scale by 2029-2031.
+Proof of concept in Q2-Q3 2026 (core protocol on Ethereum testnet, integrated in the Calmido app, acquisition of first resolver node operators). Pilot with a first telecom partner and KvK integration in Q4 2026-Q2 2027. Production deployment on Ethereum Layer 2 (L2) or EBSI in Q3 2027-Q4 2028. Pan-European scale by 2029-2031.
 
 *The rest of this document describes the protocol architecture, use cases, governance, incentive structure, and partnership strategy in detail.*
 
@@ -43,9 +43,9 @@ Proof of concept in Q2-Q3 2026 (core protocol on Ethereum testnet, integrated in
 
 Digital deception has fundamentally undermined trust in communications. In the Netherlands alone, an estimated €1.75 billion was lost to scams in 2024, affecting one in seven citizens \[1\]. Across Europe, consumers receive between two and fifteen unwanted calls per week \[2\], and 92% now assume that unidentified calls are fraudulent \[3\]. Nearly half of all calls from unknown numbers go unanswered, even when the caller is legitimate. In the first quarter of 2025, Dutch fraud reports tripled compared to the same period a year earlier \[4\]. Among victims, more than 40% report diminished trust in others, and 25% say they feel less safe \[5\].
 
-The emergence of generative AI is accelerating this erosion. Voice cloning, synthetic identities, and AI-generated social engineering attacks are becoming increasingly sophisticated and accessible. In the Netherlands, AI-driven voice impersonation scams have been a primary driver behind the surge in fraudulent calls \[4\]. Existing solutions - call blockers, spam filters, static databases - address symptoms rather than root causes. They focus on content rather than context, and they cannot establish trust.
+The emergence of generative AI is accelerating this erosion. Voice cloning, synthetic identities, and AI-generated social engineering attacks are becoming increasingly sophisticated and accessible. In the Netherlands, AI-driven voice impersonation scams have been a primary driver behind the surge in fraudulent calls \[4\]. Existing solutions such as call blockers, spam filters, static databases address symptoms rather than root causes. They focus on content rather than context, and they cannot establish trust.
 
-The vulnerability is not limited to end users. In February 2026, Odido - the largest mobile provider in the Netherlands - suffered a data breach exposing personal data of 6.2 million customers, including names, addresses, bank account numbers, and identification documents \[7\]. The attack targeted a customer contact system, demonstrating that centralised telecom databases are themselves high-value targets. The stolen data increases the risk of precisely the kind of social engineering and SIM swap attacks that the current infrastructure cannot defend against.
+The vulnerability is not limited to end users. In February 2026, Odido, the largest mobile provider in the Netherlands suffered a data breach exposing personal data of 6.2 million customers, including names, addresses, bank account numbers, and identification documents \[7\]. The attack targeted a customer contact system, demonstrating that centralised telecom databases are themselves high-value targets. The stolen data increases the risk of precisely the kind of social engineering and SIM swap attacks that the current infrastructure cannot defend against.
 
 What is missing is infrastructure: an open, decentralised layer that can authenticate the identity behind a communication before it reaches the recipient. Not a product. A protocol.
 
@@ -57,23 +57,23 @@ Parts of this problem have been addressed before. STIR/SHAKEN, mandated for US c
 
 **It is a coordination problem.** A trust protocol requires simultaneous participation from telecom operators, government agencies, chambers of commerce, and application developers. None of these parties has an individual incentive to initiate such a system. An independent foundation is the natural coordinator, but someone has to establish it.
 
-**It suffers from a cold-start problem.** A verification protocol is only useful if parties register on it and applications query it. Neither side moves if the other is empty. Breaking this deadlock requires three parallel moves: a consumer application (Calmido) that provides the first users and demonstrates demand; at least one telecom partner that commits to operating a resolver node and issuing credentials; and a public communications strategy that frames the protocol as an industry initiative rather than a single company’s project. The telecom partner is the critical dependency - without a resolver, the protocol cannot issue credentials, and without credentials, the app has nothing to display.
+**It suffers from a cold-start problem.** A verification protocol is only useful if parties register on it and applications query it. Neither side moves if the other is empty. Breaking this deadlock requires three parallel moves: a consumer application (Calmido) that provides the first users and demonstrates demand; at least one telecom partner that commits to operating a resolver node and issuing credentials; and a public communications strategy that frames the protocol as an industry initiative rather than a single company’s project. The telecom partner is the critical dependency. Without a resolver, the protocol cannot issue credentials, and without credentials, the app has nothing to display.
 
-**It does not fit conventional business models.** An open protocol governed by a foundation is not attractive to venture capital. The commercial solutions that do exist - Truecaller, Hiya - generate revenue by collecting and monetising user contact data, which is precisely the model that a trust protocol should avoid. There was no financial incentive to build it the right way.
+**It does not fit conventional business models.** An open protocol governed by a foundation is not attractive to venture capital. The commercial solutions that do exist, Truecaller and Hiya generate revenue by collecting and monetising user contact data, which is precisely the model that a trust protocol should avoid. There was no financial incentive to build it the right way.
 
-**The closest parallel is emerging but incomplete.** The GSMA Open Gateway initiative, launched in 2023 and now supported by more than 79 mobile operators worldwide, exposes standardised network APIs through the CAMARA open-source project (Linux Foundation). CAMARA already includes APIs directly relevant to trust and fraud prevention: SIM Swap detection, Number Verification, Verified Caller, Number Recycling, and several Know Your Customer variants. In the Netherlands, the industry association COIN coordinates the national implementation of CAMARA APIs and operates shared infrastructure for number portability, identity management, and fraud prevention across all Dutch operators.
+**The closest parallel is emerging but incomplete.** The GSMA Open Gateway initiative, launched in 2023 and now supported by more than 79 mobile operators worldwide, exposes standardised network APIs through the CAMARA open-source project (Linux Foundation). CAMARA already includes APIs directly relevant to trust and fraud prevention: SIM Swap detection, Number Verification, Verified Caller, Number Recycling, and several Know Your Customer (KYC) variants. In the Netherlands, the industry association COIN coordinates the national implementation of CAMARA APIs and operates shared infrastructure for number portability, identity management, and fraud prevention across all Dutch operators.
 
-These APIs are valuable but fundamentally transactional: an application asks a question ("was this number recently ported?") and receives an answer. There is no persistent trust layer, no time-based reputation, no user-sovereign identity, and no cross-operator view. Each API call is stateless. TARIDE is designed to complement - not compete with - this ecosystem. The protocol can consume CAMARA APIs as inputs (for example, using SIM Swap data as a credential metadata field, or Number Verification as part of continuous validation) while providing the persistent, cross-operator trust layer that individual API calls cannot deliver.
+These APIs are valuable but fundamentally transactional: an application asks a question ("was this number recently ported?") and receives an answer. There is no persistent trust layer, no time-based reputation, no user-sovereign identity, and no cross-operator view. Each API call is stateless. TARIDE is designed to complement, not compete with this ecosystem. The protocol can consume CAMARA APIs as inputs (for example, using SIM Swap data as a credential metadata field, or Number Verification as part of continuous validation) while providing the persistent, cross-operator trust layer that individual API calls cannot deliver.
 
 The conditions have now converged: the regulation (eIDAS 2.0), the technology (DIDs, verifiable credentials, zero-knowledge proofs), the urgency (AI-driven fraud), and a party willing to build it from a foundation model rather than a commercial one.
 
 # What TARIDE is
 
-TARIDE - the Trust and Authentication Registry for Integrity in Digital Europe - is a non-profit foundation establishing an open protocol for verified and anonymous digital communications across Europe.
+TARIDE, the Trust and Authentication Registry for Integrity in Digital Europe is a non-profit foundation establishing an open protocol for verified and anonymous digital communications across Europe.
 
-The core principle is simple: when you receive a call, message, or notification, the protocol can confirm that the sender’s contact point (the specific phone number, email address, or messaging handle) is registered to a known account at a provider - without revealing who the sender is. Anonymity is the default. Identification is optional, and always under the control of the sender.
+The core principle is simple: when you receive a call, message, or notification, the protocol can confirm that the sender’s contact point (the specific phone number, email address, or messaging handle) is registered to a known account at a provider without revealing who the sender is. Anonymity is the default. Identification is optional, and always under the control of the sender.
 
-Any party - an individual, a business, a government agency - can register a decentralised identifier (DID) and link their communication channels to it. Their telecom or service provider confirms ownership of those channels without revealing personal information. The protocol guarantees this confirmation. It does not require or store names, addresses, or any personal data. A business that wants to be recognised by name can choose to add identity credentials. A private individual who simply wants their number confirmed as registered does not have to identify themselves at all.
+Any party, an individual, a business, a government agency can register a decentralised identifier (DID) and link their communication channels to it. Their telecom or service provider confirms ownership of those channels without revealing personal information. The protocol guarantees this confirmation. It does not require or store names, addresses, or any personal data. A business that wants to be recognised by name can choose to add identity credentials. A private individual who simply wants their number confirmed as registered does not have to identify themselves at all.
 
 TARIDE does not build consumer applications. It builds the infrastructure layer that applications use. The foundation develops and maintains:
 
@@ -104,11 +104,11 @@ TARIDE does not build consumer applications. It builds the infrastructure layer 
   with response times suitable for incoming call scenarios (sub-500
   milliseconds).
 
-The protocol is designed to be communication-channel agnostic. While the initial implementation focuses on telephony - where the problem is most acute and measurable - the architecture supports extension to email, messaging, and other digital communication channels.
+The protocol is designed to be communication-channel agnostic. While the initial implementation focuses on telephony where the problem is most acute and measurable, the architecture supports extension to email, messaging, and other digital communication channels.
 
 # Why a foundation
 
-Trust infrastructure cannot be owned by a single commercial entity. If the verification layer for digital communications is controlled by a company driven by profit maximisation, the incentives will eventually diverge from the public interest. This is not a theoretical concern - it is the pattern that has played out across the technology industry over the past two decades.
+Trust infrastructure cannot be owned by a single commercial entity. If the verification layer for digital communications is controlled by a company driven by profit maximisation, the incentives will eventually diverge from the public interest. This is not a theoretical concern, it is the pattern that has played out across the technology industry over the past two decades.
 
 TARIDE is structured as a foundation to ensure that the protocol remains:
 
@@ -143,23 +143,23 @@ The TARIDE protocol operates through *five* interconnected layers. Before descri
 **Resolver.** The provider that acknowledges the coupling between a DID and a specific instance. For a phone number, this is the telecom provider (KPN, Odido, Vodafone). For an email address, the email provider. For a messaging handle, the messaging platform. The resolver confirms that the instance is registered to the DID holder. When a user ports their number from Odido to KPN, the DID stays the same, the instance (phone number) stays the same, but the resolver changes from Odido to KPN.
 
 *Reputation attaches to the DID and the instance, not to the resolver.*
-A phone number that is ported from one provider to another retains its reputation because the DID and the instance are unchanged. Only the resolver - the party confirming ownership - changes.
+A phone number that is ported from one provider to another retains its reputation because the DID and the instance are unchanged. Only the resolver, the party confirming ownership changes.
 
 ![](images/taride_terminology.svg)
 
 *Diagram: terminology and relationships*
 
-## Registration layer
+## 1. Registration layer
 
-Any party - individual, business, or institution - creates their own decentralised identifier (DID). This involves generating a cryptographic key pair: the public key is registered on a distributed ledger (a shared, tamper-resistant record maintained across a network of independent systems, commonly known as a blockchain), while the private key remains solely with the holder. The DID belongs to its creator, not to any provider, platform, or authority. It is pseudonymous by nature: a cryptographic identifier with no inherent link to a name, address, or any personal information.
+Any party (individual, business, or institution) creates their own decentralised identifier (DID). This involves generating a cryptographic key pair: the public key is registered on a distributed ledger (a shared, tamper-resistant record maintained across a network of independent systems, commonly known as a blockchain), while the private key remains solely with the holder. The DID belongs to its creator, not to any provider, platform, or authority. It is pseudonymous by nature: a cryptographic identifier with no inherent link to a name, address, or any personal information.
 
-In practice, end users do not interact with cryptography directly. A connected application - such as Calmido - initiates the creation of a DID, manages the keys in the background, and registers the coupling between the DID, the user’s phone number, and the resolver that acknowledges this association. The user experience is comparable to setting up a messaging app: seamless, with no wallets, seed phrases, or blockchain interactions visible. When the EU Digital Identity Wallet becomes available (expected 2026-2027), it can serve the same role, making the DID portable across applications.
+In practice, end users do not interact with cryptography directly. A connected application, such as Calmido initiates the creation of a DID, manages the keys in the background, and registers the coupling between the DID, the user’s phone number, and the resolver that acknowledges this association. The user experience is comparable to setting up a messaging app: seamless, with no wallets, seed phrases, or blockchain interactions visible. When the EU Digital Identity Wallet becomes available (expected 2026-2027), it can serve the same role, making the DID portable across applications.
 
-The DID holder links instances of their communication channels - phone numbers, email addresses, messaging handles - to their DID. These associations are maintained off-chain in the resolver network. The resolver for each instance (the telecom provider for a phone number, the email provider for an email address) issues a verification credential that confirms the instance is registered to the DID holder, without revealing personal information or controlling the DID. If a user switches from Odido to KPN, the DID stays the same, the phone number (instance) stays the same, but the resolver changes: Odido’s credential is revoked and KPN issues a fresh one. The holder’s identity on the protocol persists independently of any single provider relationship.
+The DID holder links instances of their communication channels (phone numbers, email addresses, messaging)  handles to their DID. These associations are maintained off-chain in the resolver network. The resolver for each instance (the telecom provider for a phone number, the email provider for an email address) issues a verification credential that confirms the instance is registered to the DID holder, without revealing personal information or controlling the DID. If a user switches from Odido to KPN, the DID stays the same, the phone number (instance) stays the same, but the resolver changes: Odido’s credential is revoked and KPN issues a fresh one. The holder’s identity on the protocol persists independently of any single provider relationship.
 
 The DID standard (W3C) ensures interoperability with other identity systems, including the European Digital Identity Wallet under eIDAS 2.0. The protocol is designed with cryptographic agility, enabling migration to post-quantum signature schemes as these standards mature.
 
-## Verification layer
+## 2. Verification layer
 
 Credentials are issued by trusted institutions and cryptographically signed, time-bound, and revocable. They come in two categories, reflecting the protocol’s principle of anonymity by default.
 
@@ -169,7 +169,7 @@ Credentials are issued by trusted institutions and cryptographically signed, tim
 
 ### Mandatory: instance verification
 
-The resolver for each instance issues a verification credential confirming that the instance is registered to the DID holder. The resolver confirms ownership but does not own or control the DID itself. For telephony, the telecom provider (Odido, KPN, Vodafone) confirms that a specific phone number is registered to a specific account. For email, the email provider confirms the address. For messaging, the platform confirms the handle. This is the foundational credential: without it, any party could claim ownership of any instance. No personal information is disclosed in this process - the credential confirms registration, not identity.
+The resolver for each instance issues a verification credential confirming that the instance is registered to the DID holder. The resolver confirms ownership but does not own or control the DID itself. For telephony, the telecom provider (Odido, KPN, Vodafone) confirms that a specific phone number is registered to a specific account. For email, the email provider confirms the address. For messaging, the platform confirms the handle. This is the foundational credential: without it, any party could claim ownership of any instance. No personal information is disclosed in this process. The credential confirms registration, not identity.
 
 For telephony, the GSMA has proposed a framework for mobile numbers as verifiable credentials within eIDAS 2.0 wallets \[6\], distinguishing between two types of attestation that the TARIDE protocol adopts:
 
@@ -197,7 +197,7 @@ The distinction matters in practice. A company may own fifty phone numbers (cont
 
 ### Continuous validation
 
-A static credential confirms that a number was verified at a specific point in time. For higher-assurance scenarios, the protocol supports continuous validation through silent re-authentication: each time the credential is presented or a communication occurs, the application can verify in real time with the mobile network that the number is still active and still associated with the same SIM card. This uses existing telecom infrastructure - specifically the CAMARA Number Verification API, part of the GSMA Open Gateway ecosystem - and happens invisibly to the user: no codes, no pop-ups, no interaction required. The CAMARA SIM Swap API can serve a complementary role, providing the `last_sim_swap` metadata field referenced in the credential specification below.The MNO effectively provides an ongoing, real-time attestation rather than a one-time snapshot.
+A static credential confirms that a number was verified at a specific point in time. For higher-assurance scenarios, the protocol supports continuous validation through silent re-authentication: each time the credential is presented or a communication occurs, the application can verify in real time with the mobile network that the number is still active and still associated with the same SIM card. This uses existing telecom infrastructure, specifically the CAMARA Number Verification API, part of the GSMA Open Gateway ecosystem. This happens invisibly to the user: no codes, no pop-ups, no interaction required. The CAMARA SIM Swap API can serve a complementary role, providing the `last_sim_swap` metadata field referenced in the credential specification below.The Mobile Network Operator (MNO) effectively provides an ongoing, real-time attestation rather than a one-time snapshot.
 
 Silent re-authentication provides a strong defence against SIM swap attacks: even if an attacker obtains a replacement SIM, the re-authentication will fail against the DID holder’s original credential. It requires an active network connection and telecom integration, making it an optional enhancement rather than a protocol requirement. For the proof of concept, static credentials with periodic renewal are sufficient.
 
@@ -205,27 +205,27 @@ Silent re-authentication provides a strong defence against SIM swap attacks: eve
 
 DID holders who choose to be identifiable can add further credentials. A business can add a chamber of commerce (KvK) credential confirming its legal identity and registration number. Sector regulators, certification bodies, or other trusted parties can attest to financial licences, healthcare registrations, quality marks, or compliance certifications. These credentials are entirely voluntary. A private individual who only wants to confirm that their number is registered to them never has to identify themselves.
 
-The telecom provider occupies a unique position in this architecture. It is the only party that can confirm that a number is registered to the party claiming it. But it does not own or control the DID. If the holder switches provider, the DID persists. In cases of abuse, the provider retains the ability - and the legal obligation - to disclose subscriber information to authorised government agencies upon lawful request. This makes telecom partnerships foundational to the protocol’s operation.
+The telecom provider occupies a unique position in this architecture. It is the only party that can confirm that a number is registered to the party claiming it. But it does not own or control the DID. If the holder switches provider, the DID persists. In cases of abuse, the provider retains the ability and the legal obligation to disclose subscriber information to authorised government agencies upon lawful request. This makes telecom partnerships foundational to the protocol’s operation.
 
 ### Revocation and enforcement
 
 Credentials can be revoked at any time by the resolver that issued them. If a telecom provider receives abuse reports or a legal order, it can revoke the verification credential. This revocation propagates through the network in real time: all connected applications immediately see that the instance is no longer verified. This is significantly more effective than the current situation, where each spam filter or call-blocking app must independently learn that a number is untrustworthy. The protocol adds a layer of proactive trust signalling; it does not alter the existing legal framework for reactive enforcement.
 
-*The verification layer handles several operational scenarios in detail - number portability, SIM swap fraud, prepaid numbers, number recycling, and reputation evasion. These are described in the [Protocol details chapter](#_Protocol_details) below.*
+*The verification layer handles several operational scenarios in detail: number portability, SIM swap fraud, prepaid numbers, number recycling, and reputation evasion. These are described in the [Protocol details chapter](#_Protocol_details) below.*
 
-## Reputation layer
+## 3. Reputation layer
 
-End users contribute feedback on communications from DIDs that have opted into visibility - typically businesses and institutions that want to build a public trust profile. The reputation layer creates a decentralised quality signal comparable to consumer review systems. It operates exclusively on DIDs with identity credentials: anonymous DIDs that have only a verification credential are not subject to reputation scoring. Reputation attaches to the combination of DID and instance, not to the resolver. No reputation data is collected about individuals. Users who submit feedback remain anonymous, and no user profiles, behavioural scores, or personal ratings exist within the system. Spam detection for unverified or anonymous instances is an application-layer function, outside the scope of the protocol. The aggregation algorithm weights recent feedback more heavily and includes safeguards against coordinated manipulation.
+End users contribute feedback on communications from DIDs that have opted into visibility, typically businesses and institutions that want to build a public trust profile. The reputation layer creates a decentralised quality signal comparable to consumer review systems. It operates exclusively on DIDs with identity credentials: anonymous DIDs that have only a verification credential are not subject to reputation scoring. Reputation attaches to the combination of DID and instance, not to the resolver. No reputation data is collected about individuals. Users who submit feedback remain anonymous, and no user profiles, behavioural scores, or personal ratings exist within the system. Spam detection for unverified or anonymous instances is an application-layer function, outside the scope of the protocol. The aggregation algorithm weights recent feedback more heavily and includes safeguards against coordinated manipulation.
 
 ### Reputation evasion
 
 A self-sovereign protocol cannot prevent someone from creating a new DID. A party with a poor reputation could abandon their DID, create a new one, and start over. As described in the sybil resistance section above, the protocol’s primary defence is time: DID age and association age together form a trust profile that cannot be faked. A fresh DID with a fresh instance resets both clocks and starts at the lowest trust position on the network. Combined with the one-instance-one-DID constraint, optional provider trust signals, consent-based filtering, and application-level safeguards, the protocol makes reputation evasion technically possible but economically unattractive.
 
-## Consent layer
+## 4. Consent layer
 
 The previous layers are reactive: a communication arrives, the protocol provides context, and the recipient decides. The consent layer inverts this dynamic. The recipient defines in advance under which conditions communication is welcome. The protocol shifts from an information system to a filtering layer.
 
-This is consistent with the core philosophy: the DID is self-sovereign, the holder defines their own rules. Consent is the logical extension - you control not only who you are on the protocol, but also who can reach you.
+This is consistent with the core philosophy: the DID is self-sovereign, the holder defines their own rules. Consent is the logical extension: you control not only who you are on the protocol, but also who can reach you.
 
 ### Consent levels
 
@@ -248,7 +248,7 @@ Per communication channel (telephony, email, messaging), a DID holder can define
 - **Contacts only.** Accept only from DIDs in the holder’s contact list.
   Maximum restriction.
 
-Each channel can have a different setting. A user might set their phone number to “verified”, their email to “open”, and their WhatsApp to “contacts only.” This reflects how people already manage their reachability in practice - you share your mobile number selectively but your email more broadly.
+Each channel can have a different setting. A user might set their phone number to “verified”, their email to “open”, and their WhatsApp to “contacts only.” This reflects how people already manage their reachability in practice. You share your mobile number selectively but your email more broadly.
 
 ### Where consent lives
 
@@ -256,7 +256,7 @@ Consent preferences are stored as part of the DID profile in the resolver. They 
 
 ### Enforcement is at the application layer
 
-The protocol stores and serves consent preferences. It does not block communication. The telecom network establishes the connection regardless - TARIDE is not in the signalling path of a phone call. It is the recipient’s application that enforces consent: if an incoming call does not meet the holder’s preferences, the app can suppress the ring and show a notification (“Verified number, but does not meet your preferences”), or the sender’s application can warn in advance (“This recipient only accepts communication from verified DIDs”). The user always retains the final decision.
+The protocol stores and serves consent preferences. It does not block communication. The telecom network establishes the connection regardless. TARIDE is not in the signalling path of a phone call. It is the recipient’s application that enforces consent: if an incoming call does not meet the holder’s preferences, the app can suppress the ring and show a notification (“Verified number, but does not meet your preferences”), or the sender’s application can warn in advance (“This recipient only accepts communication from verified DIDs”). The user always retains the final decision.
 
 ### Impact on spam economics
 
@@ -264,7 +264,7 @@ Consent transforms the anti-spam argument from passive to active. Without consen
 
 An important design consideration: consent should not make the protocol unusable for legitimate first-contact scenarios (a new business calling a customer, a healthcare provider reaching out). The recommended default is “verified” rather than “contacts only,” and applications should mark non-compliant communication rather than silently blocking it. The recipient always sees what was filtered and why and can override at any time.
 
-## Resolver layer
+## 5. Resolver layer
 
 A distributed resolver network maintains the associations between DIDs and their instances, and serves verification, identity, reputation, and consent data to connected applications in real time. While identity credentials and reputation scores are anchored on-chain, the mapping between instances and DIDs is held within the resolver network, secured by on-chain cryptographic commitments that allow any party to verify resolver integrity without exposing sensitive data. Applications query the resolver when a communication arrives and receive a trust profile within milliseconds. The resolver architecture follows the DNS model: multiple independent operators run resolver nodes, ensuring resilience and preventing single points of failure or control.
 
@@ -290,7 +290,7 @@ During the transition, there is a brief window in which the number’s verificat
 
 ## SIM swap fraud
 
-SIM swap fraud - where an attacker convinces a telecom provider to transfer a victim’s number to a new SIM card - is a well-documented and growing problem. The protocol does not prevent SIM swaps from occurring (that is a telecom-internal security issue). And it is important to be precise about what the protocol can and cannot detect.
+SIM swap fraud - where an attacker convinces a telecom provider to transfer a victim’s number to a new SIM card, is a well-documented and growing problem. The protocol does not prevent SIM swaps from occurring (that is a telecom-internal security issue). And it is important to be precise about what the protocol can and cannot detect.
 
 ![](images/taride_simswap.svg)
 
@@ -304,7 +304,7 @@ After a SIM swap, the DID is the same, the instance (phone number) is the same, 
 
 The private key and the SIM are now on different devices. Before the swap, the victim’s device held both the private key (in the secure enclave) and the SIM (with the number). After the swap, the victim still has the private key but no longer has the SIM. The attacker has the SIM but not the private key. This separation has two consequences.
 
-**The fundamental defence: the attacker cannot use the DID.** The attacker can use the phone number to make calls and receive SMS (outside the protocol), but cannot perform any action that requires the private key: presenting the verification credential, authenticating on the protocol, or interacting with applications as the DID holder. The protocol does not protect the phone number - that is telecom-internal. It protects the DID and everything attached to it.
+**The fundamental defence: the attacker cannot use the DID.** The attacker can use the phone number to make calls and receive SMS (outside the protocol), but cannot perform any action that requires the private key: presenting the verification credential, authenticating on the protocol, or interacting with applications as the DID holder. The protocol does not protect the phone number, that is telecom-internal. It protects the DID and everything attached to it.
 
 ## Optional detection mechanisms
 
@@ -314,7 +314,7 @@ Two mechanisms can make a SIM swap visible on the protocol, but neither is autom
 
 **Credential metadata (last_sim_swap).** The telecom provider knows when a SIM swap has occurred. If the provider actively updates this information in the resolver, applications can see: “the SIM of this instance was changed 3 minutes ago.” That is a strong signal. But it requires the telecom to expose this data through its resolver, which is a service decision, not a protocol guarantee.
 
-**In summary:** the protocol’s primary defence against SIM swap is passive - the attacker gains the number but cannot use the DID. The optional detection mechanisms (continuous validation and credential metadata) can make the swap visible, but depend on telecom integration. The protocol does not claim to solve SIM swap fraud. It limits what an attacker can do after a successful swap, and provides infrastructure for detection that does not exist today.
+**In summary:** the protocol’s primary defence against SIM swap is passive: the attacker gains the number but cannot use the DID. The optional detection mechanisms (continuous validation and credential metadata) can make the swap visible, but depend on telecom integration. The protocol does not claim to solve SIM swap fraud. It limits what an attacker can do after a successful swap, and provides infrastructure for detection that does not exist today.
 
 ## Prepaid numbers and credential metadata
 
@@ -338,9 +338,9 @@ The protocol can address this without compromising privacy. The telecom provider
 
 The protocol delivers this context. It does not judge. The application layer decides how to present it to the user. A five-year-old subscription number is a different signal than a prepaid number activated yesterday. Both confirm ownership; the context tells a different story.
 
-The behavioural effect is potentially significant. If spammers know that prepaid numbers are transparently marked as such, the cost-benefit calculation shifts. Prepaid becomes less effective because recipients see the context. Contract numbers become necessary, but they are more expensive and traceable. The protocol does not need to block spam to reduce it - it makes the economics of spam more expensive.
+The behavioural effect is potentially significant. If spammers know that prepaid numbers are transparently marked as such, the cost-benefit calculation shifts. Prepaid becomes less effective because recipients see the context. Contract numbers become necessary, but they are more expensive and traceable. The protocol does not need to block spam to reduce it, it makes the economics of spam more expensive.
 
-An important caveat: there are many legitimate prepaid users - tourists, privacy-conscious individuals, people with secondary numbers. The metadata must provide context, not stigma. A prepaid number that has been active for three years with a strong reputation is more trustworthy than a fresh subscription number. It is the combination of all signals together that matters.
+An important caveat: there are many legitimate prepaid users such as tourists, privacy-conscious individuals, people with secondary numbers. The metadata must provide context, not stigma. A prepaid number that has been active for three years with a strong reputation is more trustworthy than a fresh subscription number. It is the combination of all signals together that matters.
 
 ## Number recycling
 
@@ -348,7 +348,7 @@ Telecom providers routinely recycle phone numbers, reissuing them to new custome
 
 From the protocol’s perspective, number recycling is mechanically identical to number portability: the number is unlinked from one DID and later linked to another. The old provider revokes the verification credential, the resolver removes the association, and when the number is reissued, the new holder’s DID receives a fresh credential. Reputation and verification history stay with the old DID. The new holder starts clean.
 
-**The role of last_time_active.** The critical difference between recycling and a normal port is the inactive period in between. The resolver - operated by the telecom provider - must track the last_time_active per number-DID combination: the timestamp at which the number was last associated with an active DID. When a number reappears on the protocol after months of inactivity, this metadata tells the full story. A number that was inactive for six months and is now freshly verified is a fundamentally different signal than a number that has been continuously active for five years. Applications can factor this in when presenting trust information to the user.
+**The role of last_time_active.** The critical difference between recycling and a normal port is the inactive period in between. The resolver, operated by the telecom provider must track the last_time_active per number-DID combination: the timestamp at which the number was last associated with an active DID. When a number reappears on the protocol after months of inactivity, this metadata tells the full story. A number that was inactive for six months and is now freshly verified is a fundamentally different signal than a number that has been continuously active for five years. Applications can factor this in when presenting trust information to the user.
 
 This metadata belongs in the verification credential (as “last number reassignment”) and is maintained by the resolver that the telecom operates. The provider is the only party that knows the full history: when the number was released, how long it sat in quarantine, and when it was reissued.
 
@@ -358,7 +358,7 @@ Two additional implementation requirements apply. First, resolver nodes must act
 
 A fundamental tension exists between self-sovereign identity and reputation persistence. If anyone can create a new DID at any time, what prevents a bad actor from abandoning a DID with a poor reputation and starting fresh? This applies across channels: a spammer on WhatsApp can create a new account, a scammer can reinstall Calmido and obtain a new DID, a fraudulent caller can acquire a new number.
 
-The protocol cannot prevent the creation of new DIDs - that would undermine self-sovereignty. But it has one defence mechanism that no attacker can circumvent: **time.**
+The protocol cannot prevent the creation of new DIDs, as that would undermine self-sovereignty. But it has one defence mechanism that no attacker can circumvent: **time.**
 
 ## Time as the ultimate trust signal
 
@@ -379,24 +379,24 @@ A DID can be created in seconds. A prepaid SIM can be bought in minutes. But no 
   instance last change? This is not a time dimension but a separate
   metadata field. After a number port or provider switch, the resolver
   changes and a fresh credential is issued. An old DID with an old
-  association but a recent resolver change indicates a portability event
-  — informative context, but not a trust reset.
+  association but a recent resolver change indicates a portability event, 
+  informative context, but not a trust reset.
 
-The combination of these two time dimensions produces a trust profile that applications can evaluate. An old DID + old association = maximum trust. A new DID + new association = minimum trust (unknown, not necessarily untrustworthy). The last resolver change metadata adds context: an old DID with an old association but a recent resolver change is consistent with a legitimate port. An old DID with a brand-new association is a different signal entirely — and one that applications can display to the user.
+The combination of these two time dimensions produces a trust profile that applications can evaluate. An old DID + old association = maximum trust. A new DID + new association = minimum trust (unknown, not necessarily untrustworthy). The last resolver change metadata adds context: an old DID with an old association but a recent resolver change is consistent with a legitimate port. An old DID with a brand-new association is a different signal entirely, and one that applications can display to the user.
 
-This is the protocol’s most powerful anti-spam mechanism. A spammer who burns through DIDs and numbers resets both clocks every time. Each fresh identity starts at the lowest trust position on the network. Rebuilding takes real time — time during which the number is visible as new, unestablished, and unknown. The economics of spam depend on high-volume, low-cost identity creation. The protocol makes identity creation free but trust accumulation slow.
+This is the protocol’s most powerful anti-spam mechanism. A spammer who burns through DIDs and numbers resets both clocks every time. Each fresh identity starts at the lowest trust position on the network. Rebuilding takes real time, time during which the number is visible as new, unestablished, and unknown. The economics of spam depend on high-volume, low-cost identity creation. The protocol makes identity creation free but trust accumulation slow.
 
 ## Additional sybil resistance mechanisms
 
 **One instance, one DID.** The protocol enforces that a given instance (a specific phone number, email address, or messaging handle) can only be linked to one DID at a time. The reverse does not apply: a single DID can hold multiple instances across multiple channels, reflecting the reality of dual-SIM devices and multi-channel communication. The constraint is directional: to associate an instance with a new DID, the link to the old DID must be severed first. This means an actor cannot build a clean profile in parallel while maintaining the old one. A fresh start requires giving up everything that was built before.
 
-**Optional provider trust signal.** A telecom provider can add a trust endorsement to the verification credential - comparable to a blue checkmark on social media. This is an active quality judgement by the provider: it signals that the provider knows this customer, has verified their identity, and stands behind the registration. A KPN customer with a verified identity and a long-running contract receives a stronger trust signal than an anonymous prepaid activation. This is not a pseudonymous hash or a linking mechanism - it is a straightforward endorsement that adds weight to the credential without revealing the customer’s identity.
+**Optional provider trust signal.** A telecom provider can add a trust endorsement to the verification credential, comparable to a blue checkmark on social media. This is an active quality judgement by the provider: it signals that the provider knows this customer, has verified their identity, and stands behind the registration. A KPN customer with a verified identity and a long-running contract receives a stronger trust signal than an anonymous prepaid activation. This is not a pseudonymous hash or a linking mechanism, it is a straightforward endorsement that adds weight to the credential without revealing the customer’s identity.
 
 The trust signal is an optional credential attribute. A DID without a provider endorsement is not penalised, but a DID with one receives a higher trust score in connected applications. This creates a natural incentive for legitimate users to register with providers that offer endorsements, without mandating it at the protocol level.
 
 **Application-level measures.** Beyond the protocol, applications can implement their own safeguards: device fingerprinting (distinct from user identification), rate limiting on new account creation, minimum verification periods before a new DID is treated as active, and behavioural analysis. These measures are application-layer decisions, not protocol rules, but the protocol is designed to support them by providing the necessary signals.
 
-The underlying design principle is that the protocol makes reputation evasion visible and expensive rather than impossible. Perfect sybil resistance would require mandatory identification, which would violate the core commitment to anonymity by default. The chosen approach - time as the primary trust signal, layered with optional linkage and transparency - achieves a practical balance: evasion remains technically possible but economically unattractive.
+The underlying design principle is that the protocol makes reputation evasion visible and expensive rather than impossible. Perfect sybil resistance would require mandatory identification, which would violate the core commitment to anonymity by default. The chosen approach, time as the primary trust signal, layered with optional linkage and transparency, achieves a practical balance: evasion remains technically possible but economically unattractive.
 
 # Use cases
 
