@@ -27,7 +27,7 @@ The protocol operates through five layers. The **1. registration layer** establi
 
 ## Time as trust
 
-The protocol’s most powerful anti-spam mechanism is unforgeable: time. Two independent timestamps — DID age and instance-DID association age form a trust profile that no attacker can fake. A separate metadata field (last attestation provider change) flags recent portability or provider switches. Creating a new identity is free. Building trust takes months. This makes spam economically unattractive without requiring identification.
+The protocol’s most powerful anti-spam mechanism is unforgeable: time. Two independent timestamps, DID age and instance-DID association age form a trust profile that no attacker can fake. A separate metadata field (last attestation provider change) flags recent portability or provider switches. Creating a new identity is free. Building trust takes months. This makes spam economically unattractive without requiring identification.
 
 ## Why a foundation
 
@@ -150,7 +150,7 @@ The TARIDE protocol operates through *five* interconnected layers. Before descri
 **Cache node.** An operator in the resolver network that serves trust profiles to connected applications in real time. Cache nodes replicate data from attestation providers and verify it against on-chain commitments. They do not issue or revoke credentials. Any party meeting the technical and governance requirements can operate a cache node.
 
 *Reputation attaches to the DID and the instance, not to the attestation provider.*
-A phone number that is ported from one provider to another retains its reputation because the DID and the instance are unchanged. Only the attestation provider — the party confirming ownership — changes.
+A phone number that is ported from one provider to another retains its reputation because the DID and the instance are unchanged. Only the attestation provider, the party confirming ownership changes.
 
 ![](images/taride_terminology.svg)
 
@@ -261,19 +261,19 @@ End users contribute feedback on communications from DIDs that have opted into v
 
 ### Reputation data architecture
 
-Reputation data is maintained off-chain in the resolver network, not on the blockchain. This is a deliberate architectural choice. Reputation scores are inherently dynamic — they change with every new piece of feedback. An append-only ledger is designed for immutable records (DIDs, credentials, timestamps), not for data that updates weekly. Writing every reputation update on-chain would impose gas costs on every contributing application and create a scaling bottleneck as the network grows.
+Reputation data is maintained off-chain in the resolver network, not on the blockchain. This is a deliberate architectural choice. Reputation scores are inherently dynamic, they change with every new piece of feedback. An append-only ledger is designed for immutable records (DIDs, credentials, timestamps), not for data that updates weekly. Writing every reputation update on-chain would impose gas costs on every contributing application and create a scaling bottleneck as the network grows.
 
 Instead, the protocol uses a two-layer approach. Aggregated reputation scores are stored and served by cache nodes as part of the trust profile. Periodically, the resolver network writes a cryptographic commitment (a hash of the current reputation state) to the chain. This commitment serves as an integrity anchor: any party can verify that the reputation data served by a cache node matches the committed state, without the data itself needing to be on-chain. The chain provides auditability and tamper evidence; the resolver network provides speed and flexibility.
 
-Applications submit aggregated feedback to the resolver network via the protocol API. Individual user feedback never leaves the originating app — only summarised scores per DID-instance combination are submitted. The resolver network validates, aggregates across all contributing applications, and updates the reputation profile. The commitment cycle (how often a hash is written to the chain) is defined in the protocol specification — the target is daily for the production network.
+Applications submit aggregated feedback to the resolver network via the protocol API. Individual user feedback never leaves the originating app, only summarised scores per DID-instance combination are submitted. The resolver network validates, aggregates across all contributing applications, and updates the reputation profile. The commitment cycle (how often a hash is written to the chain) is defined in the protocol specification, the target is daily for the production network.
 
 ### Application incentive for reputation contribution
 
-An open protocol only produces a shared reputation signal if applications contribute their data. Without an incentive, each app would rationally keep its reputation data private — it is a competitive advantage, and sharing it benefits competitors.
+An open protocol only produces a shared reputation signal if applications contribute their data. Without an incentive, each app would rationally keep its reputation data private as it is a competitive advantage, and sharing it benefits competitors.
 
 The protocol addresses this through a revenue-sharing mechanism tied to the lookup fee structure. Applications that contribute reputation data to the resolver network receive a share of the lookup fees generated by reputation queries. The more data an application contributes, and the higher its data quality (measured by consistency, volume, and absence of manipulation signals), the larger its share. This creates a direct financial incentive to contribute rather than hoard.
 
-The mechanism also serves as a quality filter. An application that submits manipulated reputation data (fake positive reviews, coordinated downvoting) degrades its quality score and loses revenue share. In extreme cases, the foundation can exclude an application from the reputation contribution programme. This is a second argument for application registration with a verifiable identity — without knowing who is submitting data, quality enforcement is impossible.
+The mechanism also serves as a quality filter. An application that submits manipulated reputation data (fake positive reviews, coordinated downvoting) degrades its quality score and loses revenue share. In extreme cases, the foundation can exclude an application from the reputation contribution programme. This is a second argument for application registration with a verifiable identity, without knowing who is submitting data, quality enforcement is impossible.
 
 ### Reputation evasion
 
@@ -336,13 +336,13 @@ The capability registry serves a second purpose: it allows the protocol to valid
 
 ### Automatic attestation provider detection
 
-When a user registers an instance on the protocol, the application must determine the correct attestation provider. This process is automated — the user does not manually select a provider.
+When a user registers an instance on the protocol, the application must determine the correct attestation provider. This process is automated, the user does not manually select a provider.
 
-For telephony, the application queries existing number portability infrastructure. In the Netherlands, the COIN database maps every active phone number to its current provider. Equivalent databases exist across Europe under the EECC framework. For email, the application performs a standard DNS lookup (MX record) to identify the authoritative mail provider. For messaging platforms, the platform itself is the attestation provider — the handle's namespace identifies the provider directly (@user on WhatsApp routes to WhatsApp as attestation provider).
+For telephony, the application queries existing number portability infrastructure. In the Netherlands, the COIN database maps every active phone number to its current provider. Equivalent databases exist across Europe under the EECC framework. For email, the application performs a standard DNS lookup (MX record) to identify the authoritative mail provider. For messaging platforms, the platform itself is the attestation provider, the handle's namespace identifies the provider directly (@user on WhatsApp routes to WhatsApp as attestation provider).
 
 When a number is ported to a new provider, the same detection mechanism applies: the portability database reflects the change, the application identifies the new attestation provider, and the credential lifecycle proceeds as described in the number portability section. The user is not involved in this process.
 
-This automatic detection ensures that attestation provider assignment is accurate, current, and frictionless. It also prevents a class of attacks where a malicious party claims to be the attestation provider for an instance they do not control — the protocol verifies attestation provider authority against the capability registry before accepting any credential.
+This automatic detection ensures that attestation provider assignment is accurate, current, and frictionless. It also prevents a class of attacks where a malicious party claims to be the attestation provider for an instance they do not control. The protocol verifies attestation provider authority against the capability registry before accepting any credential.
 
 ![](images/taride_architecture.svg)
 
@@ -350,17 +350,17 @@ This automatic detection ensures that attestation provider assignment is accurat
 
 ## Application registration
 
-The five protocol layers describe what happens between DID holders, attestation providers, cache nodes, and the blockchain. But a critical participant is missing from this picture: the application. Calmido, third-party calling apps, email clients, and fintech integrations all interact with the resolver network — querying trust profiles, enforcing consent, and submitting reputation feedback. Without a way to identify and manage these applications, the protocol cannot enforce its own rules, attribute reputation data to its source, or distribute revenue fairly.
+The five protocol layers describe what happens between DID holders, attestation providers, cache nodes, and the blockchain. But a critical participant is missing from this picture: the application. Calmido, third-party calling apps, email clients, and fintech integrations all interact with the resolver network: querying trust profiles, enforcing consent, and submitting reputation feedback. Without a way to identify and manage these applications, the protocol cannot enforce its own rules, attribute reputation data to its source, or distribute revenue fairly.
 
 ### Application identifier
 
-Every application that connects to the resolver network registers with the TARIDE Foundation and receives a unique application identifier (UUID). This identifier is included in every interaction with the resolver network: lookups, reputation submissions, and API calls. The UUID is not visible to end users — it operates at the infrastructure level, between the app and the resolver network.
+Every application that connects to the resolver network registers with the TARIDE Foundation and receives a unique application identifier (UUID). This identifier is included in every interaction with the resolver network: lookups, reputation submissions, and API calls. The UUID is not visible to end users. It operates at the infrastructure level, between the app and the resolver network.
 
 ### Registration process
 
-Registration follows a lightweight verification model. The developer or organisation behind the application registers with a verifiable identity — a KvK number for Dutch entities, or an equivalent business registration for international participants. The foundation verifies that the applicant exists and that the protocol terms of use are accepted. There is no content review, no app store-style approval, and no waiting period. The threshold is deliberately low: any legitimate party can register within hours.
+Registration follows a lightweight verification model. The developer or organisation behind the application registers with a verifiable identity: a KvK number for Dutch entities, or an equivalent business registration for international participants. The foundation verifies that the applicant exists and that the protocol terms of use are accepted. There is no content review, no app store-style approval, and no waiting period. The threshold is deliberately low: any legitimate party can register within hours.
 
-This approach is consistent with how the protocol treats DID holders. Registration is the entry point. Trust is built over time. A freshly registered application is not untrusted — it is simply unknown, and the protocol treats it accordingly.
+This approach is consistent with how the protocol treats DID holders. Registration is the entry point. Trust is built over time. A freshly registered application is not untrusted, it is simply unknown, and the protocol treats it accordingly.
 
 ### What the UUID enables
 
@@ -374,11 +374,11 @@ The application identifier unlocks five capabilities that are impossible without
 
 **Rate limiting and abuse prevention.** The UUID allows the resolver network to enforce rate limits per application, detect anomalous query patterns, and prevent denial-of-service attacks against cache nodes.
 
-**Enforcement.** If an application violates the protocol terms — selling user data, manipulating reputation, ignoring consent preferences — the foundation can revoke its UUID. Revocation is immediate: the resolver network rejects all queries and submissions from the revoked identifier. This is the protocol's enforcement mechanism against non-compliant applications.
+**Enforcement.** If an application violates the protocol terms, such as selling user data, manipulating reputation, ignoring consent preferences, the foundation can revoke its UUID. Revocation is immediate: the resolver network rejects all queries and submissions from the revoked identifier. This is the protocol's enforcement mechanism against non-compliant applications.
 
 ### Audit right
 
-The foundation retains the right to audit any registered application for compliance with the protocol terms. This is a preventive mechanism: the knowledge that an audit can occur at any time is often sufficient to ensure compliance, without requiring resource-intensive upfront review. For applications that submit reputation data — and therefore directly influence the integrity of the protocol — the foundation may apply stricter monitoring, including automated quality checks on submitted data.
+The foundation retains the right to audit any registered application for compliance with the protocol terms. This is a preventive mechanism: the knowledge that an audit can occur at any time is often sufficient to ensure compliance, without requiring resource-intensive upfront review. For applications that submit reputation data, and therefore directly influence the integrity of the protocol. The foundation may apply stricter monitoring, including automated quality checks on submitted data.
 
 ### Reputation contribution tiers
 
@@ -388,7 +388,7 @@ Not all applications interact with the protocol in the same way. Some only query
 
 **Contributing applications** additionally submit reputation data to the resolver network. They participate in the revenue-sharing programme and are subject to data quality monitoring. A contributing application must meet minimum quality thresholds (data volume, consistency, absence of manipulation signals) to remain in the programme.
 
-An application can upgrade from read-only to contributing at any time by opting into the reputation submission programme. Downgrading is equally straightforward. The distinction is not a trust level — it is a participation choice.
+An application can upgrade from read-only to contributing at any time by opting into the reputation submission programme. Downgrading is equally straightforward. The distinction is not a trust level, it is a participation choice.
 
 ![](images/taride_application_registration.svg)
 
@@ -902,4 +902,4 @@ Amsterdam, the Netherlands
 
 **v0.3 → v0.4 (March 2026).** Renamed Verification layer to Registration layer and Credential layer to Verification layer to better reflect what each layer does. Replaced credential age with two core time dimensions (DID age, association age) plus a separate metadata field (last resolver change). Updated all diagrams accordingly. Added positioning relative to GSMA Open Gateway, CAMARA API ecosystem, and TM Forum. Added Vereniging COIN as ecosystem context for the Netherlands pilot market.
 
-**v0.4 → v0.5 (March 2026).** Split the resolver role into two distinct functions: attestation providers (credential issuance, renewal, revocation) and cache nodes (lookup serving, data distribution). Updated terminology throughout the document: "resolver" is now either "attestation provider" or "cache node" depending on context; "resolver network" retained as the collective term for the full infrastructure layer. Renamed metadata field last_resolver_change to last_attestation_provider_change. Added attestation provider registry and automatic attestation provider detection subsections to the resolver layer. Added organisation_affiliation credential type to the verification layer. Added verified logo as optional identity credential. Added decision not to include subscription plan type (business/private/family) in the protocol. Updated architecture diagram to reflect the attestation provider and cache node separation. Added cache node operator row to the stakeholder responsibilities table. Moved reputation data off-chain: scores are now maintained in the resolver network with periodic cryptographic commitments on-chain, replacing the previous model of writing aggregated scores directly to the blockchain. Added reputation data architecture and application incentive for reputation contribution subsections. Removed continuous validation and provider trust signal from the terminology diagram. Added application registration section with UUID-based identification, participation tiers (read-only and contributing), revenue-sharing mechanism for reputation contributors, and enforcement via UUID revocation.
+**v0.4 → v0.5 (March 2026).** Split the resolver role into two distinct functions: attestation providers (credential issuance, renewal, revocation) and cache nodes (lookup serving, data distribution). Updated terminology throughout the document: "resolver" is now either "attestation provider" or "cache node" depending on context; "resolver network" retained as the collective term for the full infrastructure layer. Renamed metadata field last_resolver_change to last_attestation_provider_change. Added attestation provider registry and automatic attestation provider detection subsections to the resolver layer. Added organisation_affiliation credential type to the verification layer. Added verified logo as optional identity credential. Updated architecture diagram to reflect the attestation provider and cache node separation. Added cache node operator row to the stakeholder responsibilities table. Moved reputation data off-chain: scores are now maintained in the resolver network with periodic cryptographic commitments on-chain, replacing the previous model of writing aggregated scores directly to the blockchain. Added reputation data architecture and application incentive for reputation contribution subsections. Added application registration section with UUID-based identification, participation tiers (read-only and contributing), revenue-sharing mechanism for reputation contributors, and enforcement via UUID revocation.
