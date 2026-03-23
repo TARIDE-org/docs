@@ -268,7 +268,7 @@ An important design consideration: consent should not make the protocol unusable
 
 A distributed resolver network maintains the associations between DIDs and their instances, and serves verification, identity, reputation, and consent data to connected applications in real time. While identity credentials and reputation scores are anchored on-chain, the mapping between instances and DIDs is held within the resolver network, secured by on-chain cryptographic commitments that allow any party to verify resolver integrity without exposing sensitive data. Applications query the resolver when a communication arrives and receive a trust profile within milliseconds. The resolver architecture follows the DNS model: multiple independent operators run resolver nodes, ensuring resilience and preventing single points of failure or control.
 
-![](images/tarid_architecture.svg)
+![](images/taride_architecture.svg)
 
 *Diagram: protocol architecture*
 
