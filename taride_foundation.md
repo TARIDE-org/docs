@@ -876,31 +876,31 @@ Amsterdam, the Netherlands
 
 # References
 
-**\[1\]** GASA & Feedzai, *The State of Scams in the Netherlands 2024*, November 2024. gasa.org
+**\[1\]** GASA & Feedzai, [*The State of Scams in the Netherlands 2024*](https://gasa.org/knowledge-base/blog/1-in-7-dutch-scammed-state-of-scams-in-the-netherlands-2024), November 2024. gasa.org
 
-**\[2\]** Hiya, *H1 2024 Global Call Threat Report*, August 2024. hiya.com
+**\[2\]** Hiya, [*H1 2024 Global Call Threat Report*](https://www.hiya.com/newsroom/press-releases/global-phone-spam-and-fraud-report-nearly-a-third-of-all-unknown-calls-in-first-half-of-2024-were-unwanted), August 2024. hiya.com
 
-**\[3\]** Hiya, *2024 State of the Call*, March 2024. hiya.com
+**\[3\]** Hiya, [*2024 State of the Call*](https://blog.hiya.com/2024-state-of-the-call-consumers-prefer-voice-but-spam-and-fraud-are-threats), March 2024. hiya.com
 
-**\[4\]** NL Times, “Scammers use AI voice cloning to target thousands in the Netherlands”, April 2025. Based on data from the Fraude Helpdesk.
+**\[4\]** NL Times, [“Scammers use AI voice cloning to target thousands in the Netherlands”](https://nltimes.nl/2025/04/12/scammers-use-ai-voice-cloning-target-thousands-netherlands), April 2025. Based on data from the Fraude Helpdesk.
 
-**\[5\]** Statistics Netherlands (CBS), *Online Safety and Crime Survey
-2024*. As reported by BioCatch and ThreatMark, 2025.
+**\[5\]** Statistics Netherlands (CBS), [*Online Safety and Crime Survey
+2024*](https://www.cbs.nl/en-gb/news/2025/16/more-victims-of-online-crime-in-2024). As reported by BioCatch and ThreatMark, 2025.
 
-**\[6\]** GSMA, *Mobile Number as a Verifiable Credential in eIDAS 2.0 Wallets*, October 2023. Whitepaper by the GSMA European Identity Group.
+**\[6\]** GSMA, [*Mobile Number as a Verifiable Credential in eIDAS 2.0 Wallets*](https://www.gsma.com/about-us/regions/europe/gsma_resources/mobile-number-as-a-verifiable-credential-in-eidas-2-0-wallets/), October 2023. Whitepaper by the GSMA European Identity Group.
 
 **\[7\]** Odido data breach, February 2026. 6.2 million customer records exposed. Reported by multiple sources including *The Record*, *Cybernews*, and *The Register*, February 12-13, 2026.
 
-**\[8\]** European Electronic Communications Code (EECC), Directive (EU)
-2018/1972. Transposition completed across all 27 Member States by August 2024. Article 106 governs number portability and switching.
+**\[8\]** [European Electronic Communications Code (EECC), Directive (EU)
+2018/1972](https://eur-lex.europa.eu/eli/dir/2018/1972/oj/eng). Transposition completed across all 27 Member States by August 2024. Article 106 governs number portability and switching.
 
-**\[9\]** European Commission, *Report on the functioning of the EECC*, January 2026. Followed by the Digital Networks Act (DNA) proposal to replace the Code.
+**\[9\]** European Commission, [*Report on the functioning of the EECC*](https://digital-strategy.ec.europa.eu/en/library/report-functioning-european-electronic-communications-code-eecc), January 2026. Followed by the Digital Networks Act (DNA) proposal to replace the Code.
 
-**[10]** CAMARA Project (Linux Foundation), *Network API specifications*, 2022-present. Open-source API definitions for telecom network capabilities. camaraproject.org
+**[10]** CAMARA Project (Linux Foundation), [*Network API specifications*](https://camaraproject.org/api-overview/), 2022-present. Open-source API definitions for telecom network capabilities. camaraproject.org
 
-**[11]** GSMA, *Open Gateway Initiative*, launched February 2023. Standardised API framework supported by 79+ operators across 85 countries. gsma.com/solutions-and-impact/gsma-open-gateway
+**[11]** GSMA, [*Open Gateway Initiative*](https://www.gsma.com/newsroom/press-release/gsma-open-gateway/), launched February 2023. Standardised API framework supported by 79+ operators across 85 countries. gsma.com/solutions-and-impact/gsma-open-gateway
 
-**[12]** Vereniging COIN, *Industry association of Dutch telecom operators*. Operates shared infrastructure for number portability, identity management, CAMARA implementation, and fraud prevention. coin.nl
+**[12]** Vereniging COIN, [*Industry association of Dutch telecom operators*](https://coin.nl/nl/home). Operates shared infrastructure for number portability, identity management, CAMARA implementation, and fraud prevention. coin.nl
 
 # Version history
 
