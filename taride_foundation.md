@@ -205,6 +205,17 @@ Silent re-authentication provides a strong defence against SIM swap attacks: eve
 
 DID holders who choose to be identifiable can add further credentials. A business can add a chamber of commerce (KvK) credential confirming its legal identity and registration number. Sector regulators, certification bodies, or other trusted parties can attest to financial licences, healthcare registrations, quality marks, or compliance certifications. These credentials are entirely voluntary. A private individual who only wants to confirm that their number is registered to them never has to identify themselves.
 
+### Optional: verified logo
+
+A trust profile expressed in text ("Verified business - ING Bank - high trust") requires the recipient to read and interpret. A verified logo achieves recognition in a fraction of a second. The protocol supports an optional verified_logo field in the identity credential, allowing organisations to attach a visually verified brand mark to their DID.
+
+The concept is inspired by BIMI (Brand Indicators for Message Identification), an email standard that displays a verified sender logo alongside authenticated messages. BIMI itself is built on email-specific infrastructure (DMARC, SPF, DKIM). The TARIDE protocol adopts the principle. A verified visual mark tied to a verified identity without inheriting the email dependency. The same logo is available across all channels: telephony, email, and messaging.
+
+Logo verification relies on existing trademark infrastructure. An organisation adds a logo to its identity credential, accompanied by proof of trademark ownership through a Verified Mark Certificate (VMC) or an EUIPO trademark registration. The credential issuer (for example, the KvK or a certification body) validates the mark before including it in the credential. The resolver delivers the logo alongside other trust data during a lookup. The recipient's application displays it in the call screen, message header, or inbox, wherever the trust profile is shown.
+
+The field is strictly optional. Organisations without a registered trademark or without the need for visual recognition simply omit it. The protocol does not treat the absence of a logo as a negative signal. This prevents the mechanism from becoming a barrier for small businesses or non-commercial entities.
+At the application layer, the logo serves as a visual anchor for trust. A recipient who sees the ING logo on an incoming call does not need to parse text or interpret reputation scores. Recognition is immediate. For businesses, this creates a direct incentive to register on the protocol with full identity credentials: their brand becomes visible and verifiable at the moment of contact.
+
 The telecom provider occupies a unique position in this architecture. It is the only party that can confirm that a number is registered to the party claiming it. But it does not own or control the DID. If the holder switches provider, the DID persists. In cases of abuse, the provider retains the ability and the legal obligation to disclose subscriber information to authorised government agencies upon lawful request. This makes telecom partnerships foundational to the protocol’s operation.
 
 ### Revocation and enforcement
