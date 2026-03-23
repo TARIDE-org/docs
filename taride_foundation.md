@@ -104,6 +104,11 @@ TARIDE does not build consumer applications. It builds the infrastructure layer 
   with response times suitable for incoming call scenarios (sub-500
   milliseconds).
 
+- **An application registry** where every application that connects to
+  the protocol registers with a unique identifier (UUID). This enables
+  per-application consent, reputation data attribution, revenue sharing,
+  and enforcement of protocol rules.
+
 The protocol is designed to be communication-channel agnostic. While the initial implementation focuses on telephony where the problem is most acute and measurable, the architecture supports extension to email, messaging, and other digital communication channels.
 
 # Why a foundation
@@ -343,6 +348,52 @@ This automatic detection ensures that attestation provider assignment is accurat
 
 *Diagram: protocol architecture*
 
+## Application registration
+
+The five protocol layers describe what happens between DID holders, attestation providers, cache nodes, and the blockchain. But a critical participant is missing from this picture: the application. Calmido, third-party calling apps, email clients, and fintech integrations all interact with the resolver network — querying trust profiles, enforcing consent, and submitting reputation feedback. Without a way to identify and manage these applications, the protocol cannot enforce its own rules, attribute reputation data to its source, or distribute revenue fairly.
+
+### Application identifier
+
+Every application that connects to the resolver network registers with the TARIDE Foundation and receives a unique application identifier (UUID). This identifier is included in every interaction with the resolver network: lookups, reputation submissions, and API calls. The UUID is not visible to end users — it operates at the infrastructure level, between the app and the resolver network.
+
+### Registration process
+
+Registration follows a lightweight verification model. The developer or organisation behind the application registers with a verifiable identity — a KvK number for Dutch entities, or an equivalent business registration for international participants. The foundation verifies that the applicant exists and that the protocol terms of use are accepted. There is no content review, no app store-style approval, and no waiting period. The threshold is deliberately low: any legitimate party can register within hours.
+
+This approach is consistent with how the protocol treats DID holders. Registration is the entry point. Trust is built over time. A freshly registered application is not untrusted — it is simply unknown, and the protocol treats it accordingly.
+
+### What the UUID enables
+
+The application identifier unlocks five capabilities that are impossible without it.
+
+**Per-application consent.** DID holders can set consent preferences per application, not just per channel. A user might set telephony to "verified" in Calmido but to "contacts only" in another app. The UUID makes this differentiation possible.
+
+**Reputation attribution.** When an application submits reputation feedback to the resolver network, the UUID identifies the source. If one application submits manipulated data (fake reviews, coordinated downvoting), the resolver network can isolate that data without affecting contributions from other applications. This is the foundation of reputation data integrity.
+
+**Revenue sharing.** Applications that contribute reputation data receive a share of lookup fees. The UUID is the accounting key: the resolver network tracks which application submitted what data, measures quality, and distributes revenue accordingly. Without it, there is no fair way to compensate contributors.
+
+**Rate limiting and abuse prevention.** The UUID allows the resolver network to enforce rate limits per application, detect anomalous query patterns, and prevent denial-of-service attacks against cache nodes.
+
+**Enforcement.** If an application violates the protocol terms — selling user data, manipulating reputation, ignoring consent preferences — the foundation can revoke its UUID. Revocation is immediate: the resolver network rejects all queries and submissions from the revoked identifier. This is the protocol's enforcement mechanism against non-compliant applications.
+
+### Audit right
+
+The foundation retains the right to audit any registered application for compliance with the protocol terms. This is a preventive mechanism: the knowledge that an audit can occur at any time is often sufficient to ensure compliance, without requiring resource-intensive upfront review. For applications that submit reputation data — and therefore directly influence the integrity of the protocol — the foundation may apply stricter monitoring, including automated quality checks on submitted data.
+
+### Reputation contribution tiers
+
+Not all applications interact with the protocol in the same way. Some only query trust profiles (read-only). Others also submit reputation feedback (read-write). The protocol distinguishes between these roles.
+
+**Read-only applications** receive a UUID and can query cache nodes for trust profiles. They pay lookup fees. They do not submit reputation data and do not participate in revenue sharing.
+
+**Contributing applications** additionally submit reputation data to the resolver network. They participate in the revenue-sharing programme and are subject to data quality monitoring. A contributing application must meet minimum quality thresholds (data volume, consistency, absence of manipulation signals) to remain in the programme.
+
+An application can upgrade from read-only to contributing at any time by opting into the reputation submission programme. Downgrading is equally straightforward. The distinction is not a trust level — it is a participation choice.
+
+![](images/taride_application_registration.svg)
+
+*Diagram: application registration and UUID capabilities*
+
 <span id="_Protocol_details" class="anchor"></span>
 
 # Protocol details
@@ -540,7 +591,7 @@ The following matrix summarises who is responsible for what in the TARIDE protoc
 | **Attestation provider (telecom, email provider, messaging platform)** | Confirms ownership of instances. Issues and revokes verification credentials. Provides metadata (account age, registration type, last SIM swap). | Does not own or control the DID. Does not store personal data on-chain. Does not see or control the private key. |
 | **Cache node operator** | Serves trust profiles to applications. Replicates data from attestation providers. Verifies data against on-chain commitments. | Does not issue or revoke credentials. Does not have access to subscriber data. |
 | **Credential issuer (KvK, regulator, certification body)** | Issues optional identity and regulatory credentials to DID holders who request them.                                                                                     | Does not participate in the verification layer. Credentials are additive, not required.                          |
-| **Application (Calmido, third-party apps)**                | Queries cache nodes for trust data. Displays trust profiles to users. Enforces consent preferences. Collects user feedback. Submits aggregated reputation data to the resolver network.     | Does not issue credentials. Does not store DID data. Individual user feedback stays in the app, not on-chain.    |
+| **Application (Calmido, third-party apps)**                | Registers with the foundation (UUID). Queries cache nodes for trust data. Displays trust profiles to users. Enforces consent preferences. Collects user feedback. Submits aggregated reputation data to the resolver network. | Does not issue credentials. Does not store DID data. Individual user feedback stays in the app, not on-chain.    |
 | **TARIDE Foundation**                                      | Develops and governs the open protocol. Maintains specifications and reference implementations. Coordinates ecosystem.                                                   | Does not build consumer applications. Does not issue credentials. Does not hold user data.                       |
 | **Blockchain (L2 / EBSI)**                                 | Stores DIDs, credentials, and cryptographic commitments (including reputation integrity hashes). Provides immutable timestamps (DID age).                                          | Does not store phone numbers, email addresses, or personal data. Does not store individual user feedback.        |
 | **End user (recipient)**                                   | Sets consent preferences. Provides optional feedback on communications. Makes final decision on whether to accept or reject a call.                                      | Does not need to understand the protocol. All complexity is handled by the app.                                  |
@@ -851,4 +902,4 @@ Amsterdam, the Netherlands
 
 **v0.3 → v0.4 (March 2026).** Renamed Verification layer to Registration layer and Credential layer to Verification layer to better reflect what each layer does. Replaced credential age with two core time dimensions (DID age, association age) plus a separate metadata field (last resolver change). Updated all diagrams accordingly. Added positioning relative to GSMA Open Gateway, CAMARA API ecosystem, and TM Forum. Added Vereniging COIN as ecosystem context for the Netherlands pilot market.
 
-**v0.4 → v0.5 (March 2026).** Split the resolver role into two distinct functions: attestation providers (credential issuance, renewal, revocation) and cache nodes (lookup serving, data distribution). Updated terminology throughout the document: "resolver" is now either "attestation provider" or "cache node" depending on context; "resolver network" retained as the collective term for the full infrastructure layer. Renamed metadata field last_resolver_change to last_attestation_provider_change. Added attestation provider registry and automatic attestation provider detection subsections to the resolver layer. Added organisation_affiliation credential type to the verification layer. Added verified logo as optional identity credential. Updated architecture diagram to reflect the attestation provider and cache node separation. Added cache node operator row to the stakeholder responsibilities table. Moved reputation data off-chain: scores are now maintained in the resolver network with periodic cryptographic commitments on-chain, replacing the previous model of writing aggregated scores directly to the blockchain. Added reputation data architecture and application incentive for reputation contribution subsections.
+**v0.4 → v0.5 (March 2026).** Split the resolver role into two distinct functions: attestation providers (credential issuance, renewal, revocation) and cache nodes (lookup serving, data distribution). Updated terminology throughout the document: "resolver" is now either "attestation provider" or "cache node" depending on context; "resolver network" retained as the collective term for the full infrastructure layer. Renamed metadata field last_resolver_change to last_attestation_provider_change. Added attestation provider registry and automatic attestation provider detection subsections to the resolver layer. Added organisation_affiliation credential type to the verification layer. Added verified logo as optional identity credential. Added decision not to include subscription plan type (business/private/family) in the protocol. Updated architecture diagram to reflect the attestation provider and cache node separation. Added cache node operator row to the stakeholder responsibilities table. Moved reputation data off-chain: scores are now maintained in the resolver network with periodic cryptographic commitments on-chain, replacing the previous model of writing aggregated scores directly to the blockchain. Added reputation data architecture and application incentive for reputation contribution subsections. Removed continuous validation and provider trust signal from the terminology diagram. Added application registration section with UUID-based identification, participation tiers (read-only and contributing), revenue-sharing mechanism for reputation contributors, and enforcement via UUID revocation.
