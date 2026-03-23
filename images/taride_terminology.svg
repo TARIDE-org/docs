@@ -58,7 +58,7 @@
 
   <!-- RESOLVER (provider) -->
   <rect x="660" y="175" width="220" height="70" rx="4" fill="#FFFFFF" stroke="#1B3A4B" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="770" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#1B3A4B">Resolver</text>
+  <text x="770" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#1B3A4B">Attestation provider</text>
   <text x="770" y="218" text-anchor="middle" font-size="10" fill="#5A7A8A">KPN · Odido · Google · Meta</text>
   <text x="770" y="233" text-anchor="middle" font-size="9" fill="#8AA0AC">Confirms ownership, does not own DID</text>
 
@@ -158,9 +158,9 @@
   <text x="200" y="695" text-anchor="middle" font-size="10" fill="#A8C4D0">DID age</text>
   <text x="200" y="710" text-anchor="middle" font-size="9" fill="#6AA0B0">When was it created? (on-chain)</text>
   <text x="480" y="695" text-anchor="middle" font-size="10" fill="#A8C4D0">Association age</text>
-  <text x="480" y="710" text-anchor="middle" font-size="9" fill="#6AA0B0">How long is this number linked? (resolver)</text>
-  <text x="760" y="695" text-anchor="middle" font-size="10" fill="#A8C4D0">Last resolver change</text>
-  <text x="760" y="710" text-anchor="middle" font-size="9" fill="#6AA0B0">When did the resolver last change? (resolver)</text>
+  <text x="480" y="710" text-anchor="middle" font-size="9" fill="#6AA0B0">How long is this number linked? (attestation provider)</text>
+  <text x="760" y="695" text-anchor="middle" font-size="10" fill="#A8C4D0">Last attestation provider change</text>
+  <text x="760" y="710" text-anchor="middle" font-size="9" fill="#6AA0B0">When did the attestation provider last change?</text>
 
   <!-- Legend -->
   <rect x="90" y="740" width="16" height="10" rx="2" fill="#24495C"/>

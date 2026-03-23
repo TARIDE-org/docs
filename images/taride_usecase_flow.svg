@@ -30,7 +30,7 @@
   <rect x="320" y="65" width="250" height="90" rx="4" fill="#24495C" filter="url(#shadow)"/>
   <text x="445" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">2. Link phone number</text>
   <line x1="345" y1="100" x2="545" y2="100" stroke="#2E5A6E" stroke-width="1"/>
-  <text x="445" y="118" text-anchor="middle" font-size="10" fill="#A8C4D0">Instance ↔ DID stored in resolver</text>
+  <text x="445" y="118" text-anchor="middle" font-size="10" fill="#A8C4D0">Instance ↔ DID stored in resolver network</text>
   <text x="445" y="134" text-anchor="middle" font-size="10" fill="#A8C4D0">Cryptographic commitment</text>
   <text x="445" y="148" text-anchor="middle" font-size="10" fill="#A8C4D0">on-chain (number stays private)</text>
 
@@ -52,7 +52,7 @@
   <rect x="30" y="215" width="250" height="110" rx="4" fill="#1B3A4B" filter="url(#shadow)"/>
   <text x="155" y="240" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">4. Receiving a call</text>
   <line x1="55" y1="250" x2="255" y2="250" stroke="#2E5A6E" stroke-width="1"/>
-  <text x="155" y="268" text-anchor="middle" font-size="10" fill="#A8C4D0">App queries resolver in real time</text>
+  <text x="155" y="268" text-anchor="middle" font-size="10" fill="#A8C4D0">App queries cache node in real time</text>
   <text x="155" y="284" text-anchor="middle" font-size="10" fill="#A8C4D0">Returns: DID + credential status</text>
   <text x="155" y="300" text-anchor="middle" font-size="10" fill="#A8C4D0">+ identity (if disclosed)</text>
   <text x="155" y="316" text-anchor="middle" font-size="10" fill="#A8C4D0">+ reputation score</text>
@@ -76,7 +76,7 @@
   <rect x="610" y="215" width="260" height="110" rx="4" fill="#2E5A6E" filter="url(#shadow)"/>
   <text x="740" y="240" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">6. Cross-app access</text>
   <line x1="635" y1="250" x2="845" y2="250" stroke="#3A6A7E" stroke-width="1"/>
-  <text x="740" y="268" text-anchor="middle" font-size="10" fill="#A8C4D0">Any app queries same resolver</text>
+  <text x="740" y="268" text-anchor="middle" font-size="10" fill="#A8C4D0">Any app queries same cache nodes</text>
   <text x="740" y="284" text-anchor="middle" font-size="10" fill="#A8C4D0">Gets same DID + credentials</text>
   <text x="740" y="300" text-anchor="middle" font-size="10" fill="#A8C4D0">+ aggregated score from all apps</text>
   <text x="740" y="316" text-anchor="middle" font-size="10" fill="#A8C4D0">Raw UGC stays with originator</text>
@@ -93,7 +93,7 @@
 
   <!-- Resolver -->
   <rect x="60" y="468" width="16" height="12" rx="2" fill="#24495C"/>
-  <text x="84" y="479" font-size="11" font-weight="bold" fill="#1B3A4B">Resolver (off-chain)</text>
+  <text x="84" y="479" font-size="11" font-weight="bold" fill="#1B3A4B">Resolver network (off-chain)</text>
   <text x="60" y="498" font-size="10" fill="#5A7A8A">Instance ↔ DID associations  ·  cached credentials and reputation  ·  real-time lookup API</text>
 
   <!-- App -->

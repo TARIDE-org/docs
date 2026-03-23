@@ -33,7 +33,7 @@
   <text x="195" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1. Proof of concept</text>
   <line x1="100" y1="97" x2="290" y2="97" stroke="#2E5A6E" stroke-width="1"/>
   <text x="195" y="114" text-anchor="middle" font-size="10" fill="#A8C4D0">Core protocol on testnet</text>
-  <text x="195" y="128" text-anchor="middle" font-size="10" fill="#A8C4D0">DID + credentials + resolver</text>
+  <text x="195" y="128" text-anchor="middle" font-size="10" fill="#A8C4D0">DID + credentials + resolver network</text>
   <text x="195" y="142" text-anchor="middle" font-size="10" fill="#A8C4D0">Calmido integration</text>
   <!-- Connector to timeline -->
   <line x1="195" y1="143" x2="195" y2="155" stroke="#1B3A4B" stroke-width="2"/>

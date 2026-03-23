@@ -58,7 +58,7 @@
   <line x1="225" y1="340" x2="270" y2="340" stroke="#5A7A8A" stroke-width="1.5" marker-end="url(#arr)"/>
   <text x="370" y="345" text-anchor="middle" font-size="10" fill="#5A7A8A">Provider revokes credential</text>
   <line x1="460" y1="340" x2="510" y2="340" stroke="#5A7A8A" stroke-width="1.5" marker-end="url(#arr)"/>
-  <text x="610" y="340" text-anchor="middle" font-size="10" fill="#5A7A8A">Resolver removes</text>
+  <text x="610" y="340" text-anchor="middle" font-size="10" fill="#5A7A8A">Attestation provider removes</text>
   <text x="610" y="353" text-anchor="middle" font-size="10" fill="#5A7A8A">number-DID A link</text>
   <line x1="690" y1="345" x2="730" y2="345" stroke="#5A7A8A" stroke-width="1.5" marker-end="url(#arr)"/>
   <text x="800" y="345" text-anchor="middle" font-size="10" fill="#5A7A8A">Number returns</text>
@@ -79,7 +79,7 @@
   <text x="650" y="420" text-anchor="middle" font-size="10" font-weight="bold" fill="#2A5A2A">Clean separation:</text>
   <text x="650" y="433" text-anchor="middle" font-size="10" fill="#2A5A2A">DID A reputation stays with DID A</text>
   <text x="650" y="446" text-anchor="middle" font-size="10" fill="#2A5A2A">DID B starts with no history</text>
-  <text x="650" y="459" text-anchor="middle" font-size="9" fill="#5A7A8A">Resolver tracks last_time_active per number+DID</text>
+  <text x="650" y="459" text-anchor="middle" font-size="9" fill="#5A7A8A">Attestation provider tracks last_time_active per number+DID</text>
 
   <!-- SCENARIO 4: Reputation evasion -->
   <text x="50" y="490" font-size="13" font-weight="bold" fill="#1B3A4B">4. Reputation evasion attempt</text>

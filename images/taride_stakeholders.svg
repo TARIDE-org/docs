@@ -34,7 +34,7 @@
 
   <!-- 3. Resolver operators (top right) -->
   <rect x="620" y="80" width="250" height="62" rx="4" fill="#FFFFFF" stroke="#2A6496" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="745" y="104" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B3A4B">Resolver operators</text>
+  <text x="745" y="104" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B3A4B">Attestation providers &amp; cache nodes</text>
   <text x="745" y="124" text-anchor="middle" font-size="10" fill="#5A7A8A">Protocol fees  ·  competitive edge  ·  fraud intel</text>
 
   <!-- 4. Credential issuers (bottom left) -->
