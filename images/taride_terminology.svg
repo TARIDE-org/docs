@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" font-family="Arial, Helvetica, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 830" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <filter id="shadow" x="-2%" y="-2%" width="104%" height="108%">
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1B3A4B" flood-opacity="0.1"/>
@@ -11,7 +11,7 @@
     </marker>
   </defs>
 
-  <rect width="960" height="700" fill="#FAFBFC"/>
+  <rect width="960" height="830" fill="#FAFBFC"/>
   <text x="480" y="35" text-anchor="middle" font-size="16" font-weight="bold" fill="#1B3A4B" letter-spacing="0.5">TARIDE terminology and relationships</text>
 
   <!-- HOLDER -->
@@ -105,70 +105,64 @@
   <line x1="465" y1="245" x2="465" y2="310" stroke="#5A7A8A" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#arr)"/>
   <text x="475" y="280" font-size="8" fill="#8AA0AC">opt-in</text>
 
-  <!-- RESOLVER -->
-  <rect x="90" y="400" width="230" height="80" rx="4" fill="#FFFFFF" stroke="#1B3A4B" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="205" y="425" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B3A4B">Resolver network</text>
-  <text x="205" y="445" text-anchor="middle" font-size="10" fill="#5A7A8A">Off-chain · distributed · DNS-like</text>
-  <text x="205" y="460" text-anchor="middle" font-size="9" fill="#8AA0AC">Stores number-DID associations</text>
-  <text x="205" y="472" text-anchor="middle" font-size="9" fill="#8AA0AC">Caches credentials + reputation</text>
+  <!-- RESOLVER NETWORK (expanded with role separation) -->
+  <rect x="90" y="400" width="230" height="120" rx="4" fill="#FFFFFF" stroke="#1B3A4B" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="205" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#1B3A4B">Resolver network</text>
+  <text x="205" y="436" text-anchor="middle" font-size="9" fill="#8AA0AC">Off-chain · distributed · DNS-like</text>
+
+  <!-- Attestation provider sub-block -->
+  <rect x="100" y="446" width="210" height="28" rx="3" fill="#E8F0F4" stroke="#24495C" stroke-width="1"/>
+  <text x="110" y="464" font-size="9" font-weight="bold" fill="#1B3A4B">Attestation providers</text>
+  <text x="310" y="464" text-anchor="end" font-size="8" fill="#5A7A8A">issue + revoke</text>
+
+  <!-- Cache node sub-block -->
+  <rect x="100" y="480" width="210" height="28" rx="3" fill="#E8F0F4" stroke="#24495C" stroke-width="1"/>
+  <text x="110" y="498" font-size="9" font-weight="bold" fill="#1B3A4B">Cache nodes</text>
+  <text x="310" y="498" text-anchor="end" font-size="8" fill="#5A7A8A">serve lookups</text>
 
   <line x1="205" y1="346" x2="205" y2="400" stroke="#5A7A8A" stroke-width="1" marker-end="url(#arr)"/>
 
   <!-- REPUTATION -->
-  <rect x="90" y="520" width="230" height="60" rx="4" fill="#2E5A6E" filter="url(#shadow)"/>
-  <text x="205" y="545" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">Reputation score</text>
-  <text x="205" y="563" text-anchor="middle" font-size="9" fill="#A8C4D0">On-chain · aggregated · only opt-in DIDs</text>
+  <rect x="90" y="560" width="230" height="60" rx="4" fill="#2E5A6E" filter="url(#shadow)"/>
+  <text x="205" y="585" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">Reputation score</text>
+  <text x="205" y="603" text-anchor="middle" font-size="9" fill="#A8C4D0">On-chain · aggregated · only opt-in DIDs</text>
 
-  <line x1="205" y1="480" x2="205" y2="520" stroke="#5A7A8A" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="205" y1="520" x2="205" y2="560" stroke="#5A7A8A" stroke-width="1" marker-end="url(#arr)"/>
 
   <!-- APPLICATIONS -->
-  <rect x="370" y="420" width="200" height="55" rx="4" fill="#FFFFFF" stroke="#2E5A6E" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="470" y="442" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B3A4B">Applications</text>
-  <text x="470" y="458" text-anchor="middle" font-size="9" fill="#5A7A8A">Calmido · third-party apps</text>
+  <rect x="370" y="440" width="200" height="55" rx="4" fill="#FFFFFF" stroke="#2E5A6E" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="470" y="462" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B3A4B">Applications</text>
+  <text x="470" y="478" text-anchor="middle" font-size="9" fill="#5A7A8A">Calmido · third-party apps</text>
 
-  <line x1="320" y1="440" x2="370" y2="447" stroke="#5A7A8A" stroke-width="1" marker-end="url(#arr)"/>
-  <text x="340" y="435" font-size="8" fill="#8AA0AC">queries</text>
+  <line x1="310" y1="494" x2="370" y2="470" stroke="#5A7A8A" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="332" y="490" font-size="8" fill="#8AA0AC">queries</text>
 
   <!-- BLOCKCHAIN -->
-  <rect x="370" y="530" width="200" height="45" rx="4" fill="#1B3A4B" filter="url(#shadow)"/>
-  <text x="470" y="550" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">Blockchain (L2 / EBSI)</text>
-  <text x="470" y="564" text-anchor="middle" font-size="9" fill="#A8C4D0">DIDs · credentials · commitments · reputation</text>
-
-  <!-- Continuous validation -->
-  <rect x="620" y="545" width="300" height="40" rx="3" fill="#FFF8E1" stroke="#C8A415" stroke-width="1"/>
-  <text x="770" y="560" text-anchor="middle" font-size="10" font-weight="bold" fill="#8A7212">Continuous validation</text>
-  <text x="770" y="575" text-anchor="middle" font-size="9" fill="#8A7212">Optional: silent re-authentication via GSMA Number Verify</text>
-  <line x1="770" y1="525" x2="770" y2="545" stroke="#C8A415" stroke-width="1" stroke-dasharray="3 2"/>
-
-  <!-- Provider trust signal -->
-  <rect x="620" y="605" width="300" height="40" rx="3" fill="#FFF8E1" stroke="#C8A415" stroke-width="1"/>
-  <text x="770" y="620" text-anchor="middle" font-size="10" font-weight="bold" fill="#8A7212">Provider trust signal</text>
-  <text x="770" y="635" text-anchor="middle" font-size="9" fill="#8A7212">Optional: provider endorsement (blue checkmark)</text>
-  <line x1="770" y1="585" x2="770" y2="605" stroke="#C8A415" stroke-width="1" stroke-dasharray="3 2"/>
+  <rect x="370" y="550" width="200" height="45" rx="4" fill="#1B3A4B" filter="url(#shadow)"/>
+  <text x="470" y="570" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">Blockchain (L2 / EBSI)</text>
+  <text x="470" y="584" text-anchor="middle" font-size="9" fill="#A8C4D0">DIDs · credentials · commitments · reputation</text>
 
   <!-- Consent layer -->
-  <rect x="90" y="600" width="230" height="40" rx="4" fill="#2E5A6E" filter="url(#shadow)"/>
-  <text x="205" y="616" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">Consent layer</text>
-  <text x="205" y="632" text-anchor="middle" font-size="9" fill="#A8C4D0">Open · verified · established · trusted · contacts</text>
-  <line x1="205" y1="580" x2="205" y2="600" stroke="#5A7A8A" stroke-width="1" marker-end="url(#arr)"/>
+  <rect x="90" y="640" width="230" height="40" rx="4" fill="#2E5A6E" filter="url(#shadow)"/>
+  <text x="205" y="656" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">Consent layer</text>
+  <text x="205" y="672" text-anchor="middle" font-size="9" fill="#A8C4D0">Open · verified · established · trusted · contacts</text>
+  <line x1="205" y1="620" x2="205" y2="640" stroke="#5A7A8A" stroke-width="1" marker-end="url(#arr)"/>
 
   <!-- TIME AS TRUST -->
-  <rect x="90" y="650" width="780" height="75" rx="4" fill="#1B3A4B" filter="url(#shadow)"/>
-  <text x="480" y="672" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Time as the ultimate trust signal</text>
-  <text x="200" y="695" text-anchor="middle" font-size="10" fill="#A8C4D0">DID age</text>
-  <text x="200" y="710" text-anchor="middle" font-size="9" fill="#6AA0B0">When was it created? (on-chain)</text>
-  <text x="480" y="695" text-anchor="middle" font-size="10" fill="#A8C4D0">Association age</text>
-  <text x="480" y="710" text-anchor="middle" font-size="9" fill="#6AA0B0">How long is this number linked? (attestation provider)</text>
-  <text x="760" y="695" text-anchor="middle" font-size="10" fill="#A8C4D0">Last attestation provider change</text>
-  <text x="760" y="710" text-anchor="middle" font-size="9" fill="#6AA0B0">When did the attestation provider last change?</text>
+  <rect x="90" y="700" width="780" height="75" rx="4" fill="#1B3A4B" filter="url(#shadow)"/>
+  <text x="480" y="722" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Time as the ultimate trust signal</text>
+  <text x="200" y="745" text-anchor="middle" font-size="10" fill="#A8C4D0">DID age</text>
+  <text x="200" y="760" text-anchor="middle" font-size="9" fill="#6AA0B0">When was it created? (on-chain)</text>
+  <text x="480" y="745" text-anchor="middle" font-size="10" fill="#A8C4D0">Association age</text>
+  <text x="480" y="760" text-anchor="middle" font-size="9" fill="#6AA0B0">How long is this number linked? (attestation provider)</text>
+  <text x="760" y="745" text-anchor="middle" font-size="10" fill="#A8C4D0">Last attestation provider change</text>
+  <text x="760" y="760" text-anchor="middle" font-size="9" fill="#6AA0B0">When did the attestation provider last change?</text>
 
   <!-- Legend -->
-  <rect x="90" y="740" width="16" height="10" rx="2" fill="#24495C"/>
-  <text x="112" y="749" font-size="9" fill="#5A7A8A">Core protocol element</text>
-  <rect x="260" y="740" width="16" height="10" rx="2" fill="#FFFFFF" stroke="#1B3A4B" stroke-width="1.5"/>
-  <text x="282" y="749" font-size="9" fill="#5A7A8A">Infrastructure</text>
-  <rect x="400" y="740" width="16" height="10" rx="2" fill="#E8F0F4" stroke="#5A7A8A" stroke-width="1" stroke-dasharray="4 2"/>
-  <text x="422" y="749" font-size="9" fill="#5A7A8A">Optional layer</text>
-  <rect x="540" y="740" width="16" height="10" rx="2" fill="#FFF8E1" stroke="#C8A415" stroke-width="1"/>
-  <text x="562" y="749" font-size="9" fill="#5A7A8A">Optional enhancement</text>
+  <rect x="90" y="795" width="16" height="10" rx="2" fill="#24495C"/>
+  <text x="112" y="804" font-size="9" fill="#5A7A8A">Core protocol element</text>
+  <rect x="260" y="795" width="16" height="10" rx="2" fill="#FFFFFF" stroke="#1B3A4B" stroke-width="1.5"/>
+  <text x="282" y="804" font-size="9" fill="#5A7A8A">Infrastructure</text>
+  <rect x="400" y="795" width="16" height="10" rx="2" fill="#E8F0F4" stroke="#5A7A8A" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="422" y="804" font-size="9" fill="#5A7A8A">Optional layer</text>
 </svg>
