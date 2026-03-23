@@ -236,7 +236,7 @@ For organisations with large numbers of employees, the protocol supports automat
 
 The affiliation credential does not replace the existing contract owner and end user distinction. A company may still own the phone contract (contract owner credential) while the employee uses the number (end user credential). The affiliation credential adds a third layer: it expresses an organisational relationship that is independent of the telecom contract structure. An employee using a personal phone number on a personal contract can still carry an affiliation credential from their employer.
 
-[![](images/taride_organisation_affiliation.svg)]
+![](images/taride_organisation_affiliation.svg)
 
 *Diagram: organisation affiliation and recipient display*
 
@@ -302,6 +302,24 @@ An important design consideration: consent should not make the protocol unusable
 ## 5. Resolver layer
 
 A distributed resolver network maintains the associations between DIDs and their instances, and serves verification, identity, reputation, and consent data to connected applications in real time. While identity credentials and reputation scores are anchored on-chain, the mapping between instances and DIDs is held within the resolver network, secured by on-chain cryptographic commitments that allow any party to verify resolver integrity without exposing sensitive data. Applications query the resolver when a communication arrives and receive a trust profile within milliseconds. The resolver architecture follows the DNS model: multiple independent operators run resolver nodes, ensuring resilience and preventing single points of failure or control.
+
+### Resolver capability registry
+
+For the resolver network to route queries correctly, each resolver must declare which communication channels and instance ranges it serves. Without this declaration, the protocol has no way to determine that a telephony query for a Dutch mobile number should be directed to KPN rather than to Google. This is analogous to how DNS nameservers are authoritative for specific zones.
+
+When a resolver joins the network, it registers its capabilities: which channels it supports (telephony, email, messaging) and which instance ranges it is authoritative for. A telecom provider declares that it serves telephony for a specific set of number ranges. An email provider declares authority over its domains. A messaging platform declares authority over its handles. This registry is maintained by the foundation and queryable by all participants in the network.
+
+The capability registry serves a second purpose: it allows the protocol to validate that a resolver is authorised to issue credentials for a given instance. If a resolver that has declared authority only over email attempts to issue a verification credential for a phone number, the protocol rejects it. This prevents both misconfiguration and credential fraud.
+
+### Automatic resolver detection
+
+When a user registers an instance on the protocol, the application must determine the correct resolver. This process is automated — the user does not manually select a provider.
+
+For telephony, the application queries existing number portability infrastructure. In the Netherlands, the COIN database maps every active phone number to its current provider. Equivalent databases exist across Europe under the EECC framework. For email, the application performs a standard DNS lookup (MX record) to identify the authoritative mail provider. For messaging platforms, the platform itself is the resolver — the handle's namespace identifies the provider directly (@user on WhatsApp routes to WhatsApp as resolver).
+
+When a number is ported to a new provider, the same detection mechanism applies: the portability database reflects the change, the application identifies the new resolver, and the credential lifecycle proceeds as described in the number portability section. The user is not involved in this process.
+
+This automatic detection ensures that resolver assignment is accurate, current, and frictionless. It also prevents a class of attacks where a malicious party claims to be the resolver for an instance they do not control — the protocol verifies resolver authority against the capability registry before accepting any credential.
 
 ![](images/taride_architecture.svg)
 
