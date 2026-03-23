@@ -216,6 +216,30 @@ Logo verification relies on existing trademark infrastructure. An organisation a
 The field is strictly optional. Organisations without a registered trademark or without the need for visual recognition simply omit it. The protocol does not treat the absence of a logo as a negative signal. This prevents the mechanism from becoming a barrier for small businesses or non-commercial entities.
 At the application layer, the logo serves as a visual anchor for trust. A recipient who sees the ING logo on an incoming call does not need to parse text or interpret reputation scores. Recognition is immediate. For businesses, this creates a direct incentive to register on the protocol with full identity credentials: their brand becomes visible and verifiable at the moment of contact.
 
+### Organisation affiliation
+
+In many business scenarios, a phone call originates not from a generic company number but from an individual employee's direct line. The current credential architecture handles this partially: the employee's number is verified through an end user credential, and the company can register its own DID with identity credentials (KvK, verified logo). But there is no mechanism to express the relationship between the two. The recipient sees either the company or the employee, but not both.
+
+The protocol addresses this with an `organisation_affiliation` credential. This is a verifiable credential issued by an organisation's DID to an employee's DID. It attests that the employee is affiliated with the organisation, without merging the two identities. Both DIDs remain self-sovereign: the employee retains full control of their DID, their instances, and their personal credentials. The affiliation is an addition, not a dependency.
+
+The issuing organisation must hold a valid identity credential (for example, a KvK registration) on its own DID. This establishes the authority to issue affiliation credentials only a verified organisation can attest that someone works for it. The credential can include a role or department description, defined by the organisation, but the employee controls whether this information is visible to recipients.
+
+When a recipient receives a call from an affiliated employee, the resolver returns both the employee's trust profile and the organisation's identity. The recipient's application can display a layered trust view:
+
+- **Organisation**: name, verified logo, KvK registration, reputation score
+- **Employee**: name and/or role (if disclosed), DID age, association age
+- **Trust signals**: both the organisation's and the employee's credential status
+
+The affiliation credential is revocable at any time by the issuing organisation. When an employee leaves, the organisation revokes the credential. The revocation propagates through the resolver network in real time: all connected applications immediately see that the affiliation is no longer active. The employee's DID, personal credentials, and reputation remain intact, only the organisational link is severed.
+
+For organisations with large numbers of employees, the protocol supports automated credential management. The organisation's identity system can issue, renew, and revoke affiliation credentials through the resolver API without manual intervention. This scales from a ten-person company to an enterprise with thousands of direct lines.
+
+The affiliation credential does not replace the existing contract owner and end user distinction. A company may still own the phone contract (contract owner credential) while the employee uses the number (end user credential). The affiliation credential adds a third layer: it expresses an organisational relationship that is independent of the telecom contract structure. An employee using a personal phone number on a personal contract can still carry an affiliation credential from their employer.
+
+[![](images/taride_organisation_affiliation.svg)]
+
+*Diagram: organisation affiliation and recipient display*
+
 The telecom provider occupies a unique position in this architecture. It is the only party that can confirm that a number is registered to the party claiming it. But it does not own or control the DID. If the holder switches provider, the DID persists. In cases of abuse, the provider retains the ability and the legal obligation to disclose subscriber information to authorised government agencies upon lawful request. This makes telecom partnerships foundational to the protocol’s operation.
 
 ### Revocation and enforcement
