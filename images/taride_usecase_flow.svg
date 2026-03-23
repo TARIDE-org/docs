@@ -89,7 +89,7 @@
   <!-- On-chain -->
   <rect x="60" y="420" width="16" height="12" rx="2" fill="#1B3A4B"/>
   <text x="84" y="431" font-size="11" font-weight="bold" fill="#1B3A4B">On-chain</text>
-  <text x="60" y="450" font-size="10" fill="#5A7A8A">DID public keys  ·  credential records  ·  cryptographic commitments  ·  aggregated reputation scores</text>
+  <text x="60" y="450" font-size="10" fill="#5A7A8A">DID public keys  ·  credential records  ·  cryptographic commitments  ·  reputation integrity hashes</text>
 
   <!-- Resolver -->
   <rect x="60" y="468" width="16" height="12" rx="2" fill="#24495C"/>
