@@ -1,6 +1,6 @@
 # TARIDE — Threat Model
 
-*Extracted from the [foundation document](../taride_foundation.md) v0.5, March 2026. For technical review by security researchers.*
+*Extracted from the [foundation document](../taride_foundation.md) v0.51, April 2026. For technical review by security researchers.*
 
 ## Protocol overview
 
@@ -108,7 +108,7 @@ The protocol relies on the following assumptions. Each is a potential attack sur
 
 ### 5. Privacy attacks
 
-**Attack:** De-anonymise users or correlate activity despite anonymity-by-default claims.
+**Attack:** De-anonymise users or correlate activity despite pseudonymity-by-default design.
 
 **On-chain footprint:**
 - DID registration (public key, creation timestamp)

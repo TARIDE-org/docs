@@ -4,7 +4,7 @@ Trust and Authentication Registry for Integrity in Digital Europe
 
 An open, European protocol for trust without identification.
 
-Read the [foundation document](taride_foundation.md) (v0.5, March 2026).
+Read the [foundation document](taride_foundation.md) (v0.51, April 2026).
 
 ## Technical review briefs
 
@@ -24,7 +24,7 @@ If you have relevant expertise and would like to contribute a review, the [feedb
 ## Repository structure
 
 ```
-taride_foundation.md              Foundation document (v0.5)
+taride_foundation.md              Foundation document (v0.51)
 feedback_plan.md                  Feedback & validation strategy
 briefs/
   telecom_brief.md                Technical brief for telecom providers / COIN

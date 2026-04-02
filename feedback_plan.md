@@ -2,7 +2,7 @@
 
 ## Objective
 
-Validate the foundation document (v0.5) with key stakeholders before committing to protocol specification and PoC development. Goal: identify architectural blind spots, dealbreakers, and missing requirements before they become expensive to fix.
+Validate the foundation document (v0.51) with key stakeholders before committing to protocol specification and PoC development. Goal: identify architectural blind spots, dealbreakers, and missing requirements before they become expensive to fix.
 
 ## Feedback groups
 
@@ -36,7 +36,7 @@ Each outreach asks specific technical questions. Adoption and partnership questi
 
 **Privacy / digital rights**
 - What privacy risks do you see in the on-chain footprint (DID registration, credential hashes)?
-- Is anonymity-by-default credible given that DID activity patterns could be correlated across transactions?
+- Is pseudonymity-by-default credible given that DID activity patterns could be correlated across transactions?
 - What is the linkability risk when a single DID holds multiple instances across channels?
 - What GDPR legal basis applies to each data processing activity in the protocol?
 - How does the data model compare to Truecaller/Hiya from a privacy perspective?
@@ -150,6 +150,6 @@ Week 10-12 Incorporate Tier 2 feedback
 Tier 1 feedback round is successful if:
 - [ ] At least one telecom contact (ideally COIN) confirms the attestation provider model is technically feasible
 - [ ] Security review identifies no fundamental protocol-breaking flaw (fixable issues are expected and welcome)
-- [ ] Privacy review confirms anonymity-by-default is credible, or identifies specific changes needed
+- [ ] Privacy review confirms pseudonymity-by-default is credible, or identifies specific changes needed
 - [ ] DID/SSI community validates the standards choices or recommends concrete alternatives
 - [ ] All Tier 1 feedback is documented in `feedback/responses/` and reflected in an updated foundation doc

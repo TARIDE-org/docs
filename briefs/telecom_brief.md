@@ -1,6 +1,6 @@
 # TARIDE — Technical Brief for Telecom Providers
 
-*Extracted from the [foundation document](../taride_foundation.md) v0.5, March 2026*
+*Extracted from the [foundation document](../taride_foundation.md) v0.51, April 2026*
 
 ## What TARIDE is
 

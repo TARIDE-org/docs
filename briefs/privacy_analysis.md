@@ -1,10 +1,10 @@
 # TARIDE — Privacy Analysis
 
-*Extracted from the [foundation document](../taride_foundation.md) v0.5, March 2026. For review by privacy advocates and digital rights organisations.*
+*Extracted from the [foundation document](../taride_foundation.md) v0.51, April 2026. For review by privacy advocates and digital rights organisations.*
 
 ## Core principle
 
-**Anonymity by default, identification by choice.** A phone number can be verified as registered without revealing who the holder is. Identity disclosure is always optional, always under the holder's control.
+**Pseudonymity by default, identification by choice.** A phone number can be verified as registered without revealing who the holder is. Identity disclosure is always optional, always under the holder's control.
 
 This is the fundamental differentiator from existing solutions. Truecaller and Hiya require or incentivise identification as a precondition for trust. STIR/SHAKEN verifies the network path, not the holder. TARIDE inverts the model: verification is the default, identification is optional.
 
@@ -102,7 +102,7 @@ A single DID can hold multiple instances across channels (phone number + email +
 
 | | TARIDE | Truecaller | Hiya | STIR/SHAKEN |
 |---|---|---|---|---|
-| **Identification required** | No — anonymity by default | Yes — name attached to number via crowdsourced data | Yes — caller ID database | No — verifies network path, not holder |
+| **Identification required** | No — pseudonymity by default | Yes — name attached to number via crowdsourced data | Yes — caller ID database | No — verifies network path, not holder |
 | **Personal data collected** | No PII stored by protocol | Contact books uploaded, names/numbers aggregated | Caller ID databases, user reports | Carrier-level data |
 | **User consent for data sharing** | Opt-in for identity, opt-in for reputation visibility | Implicit — installing the app uploads your contacts | Implicit — carrier-side integration | No end-user involvement |
 | **Who controls the identity** | DID holder (self-sovereign) | Truecaller (centralised database) | Hiya (centralised database) | Carrier |
@@ -113,7 +113,7 @@ A single DID can hold multiple instances across channels (phone number + email +
 ## Technical questions for review
 
 1. What privacy risks do you see in the on-chain footprint (DID registration, credential hashes)?
-2. Is anonymity-by-default credible given that DID activity patterns could be correlated across transactions?
+2. Is pseudonymity-by-default credible given that DID activity patterns could be correlated across transactions?
 3. What is the linkability risk when a single DID holds multiple instances across channels?
 4. What GDPR legal basis applies to each data processing activity in the protocol?
 5. How does the data model compare to Truecaller/Hiya from a privacy perspective?

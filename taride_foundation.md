@@ -4,9 +4,9 @@ Trust and Authentication Registry for Integrity in Digital Europe
 
 *An open, European protocol for trust without identification*
 
-Foundation overview · v0.5
+Foundation overview · v0.51
 
-March 2026
+April 2026
 
 [taride.org](https://taride.org/)
 
@@ -18,8 +18,8 @@ Trust in digital communications is collapsing. In the Netherlands, an estimated 
 
 TARIDE - the Trust and Authentication Registry for Integrity in Digital Europe - is an open protocol that solves this at the infrastructure level. It enables any party to verify that a communication comes from a registered source, without requiring or revealing personal information.
 
-**The core principle: anonymity by default, identification by choice.**
-This is TARIDE’s fundamental differentiator. Existing solutions (STIR/SHAKEN, Truecaller, Hiya) and industry initiatives (the GSMA Open Gateway / CAMARA API ecosystem) require or incentivise identification as a precondition for trust. TARIDE inverts this: verification is the default, identification is optional. A private individual can prove their phone number is registered without disclosing their name. A business can choose to add its KvK registration, banking licence, or other credentials. The user controls how far along the spectrum from anonymous to fully identified they go.
+**The core principle: pseudonymity by default, identification by choice.**
+This is TARIDE’s fundamental differentiator. Existing solutions (STIR/SHAKEN, Truecaller, Hiya) and industry initiatives (the GSMA Open Gateway / CAMARA API ecosystem) require or incentivise identification as a precondition for trust. TARIDE inverts this: verification is the default, identification is optional. A private individual can prove their phone number is registered without disclosing their name. A business can choose to add its KvK registration, banking licence, or other credentials. The user controls how far along the spectrum from pseudonymous to fully identified they go.
 
 ## Five protocol layers
 
@@ -73,9 +73,9 @@ The conditions have now converged: the regulation (eIDAS 2.0), the technology (D
 
 # What TARIDE is
 
-TARIDE, the Trust and Authentication Registry for Integrity in Digital Europe is a non-profit foundation establishing an open protocol for verified and anonymous digital communications across Europe.
+TARIDE, the Trust and Authentication Registry for Integrity in Digital Europe is a non-profit foundation establishing an open protocol for verified and pseudonymous digital communications across Europe.
 
-The core principle is simple: when you receive a call, message, or notification, the protocol can confirm that the sender’s contact point (the specific phone number, email address, or messaging handle) is registered to a known account at a provider without revealing who the sender is. Anonymity is the default. Identification is optional, and always under the control of the sender.
+The core principle is simple: when you receive a call, message, or notification, the protocol can confirm that the sender’s contact point (the specific phone number, email address, or messaging handle) is registered to a known account at a provider without revealing who the sender is. Pseudonymity is the default. Identification is optional, and always under the control of the sender.
 
 Any party, an individual, a business, a government agency can register a decentralised identifier (DID) and link their communication channels to it. Their telecom or service provider confirms ownership of those channels without revealing personal information. The protocol guarantees this confirmation. It does not require or store names, addresses, or any personal data. A business that wants to be recognised by name can choose to add identity credentials. A private individual who simply wants their number confirmed as registered does not have to identify themselves at all.
 
@@ -83,7 +83,7 @@ TARIDE does not build consumer applications. It builds the infrastructure layer 
 
 - **An open-source verification protocol** based on decentralised
   identifiers (DIDs) and verifiable credentials, aligned with W3C
-  standards and the European eIDAS 2.0 framework. Anonymity by default,
+  standards and the European eIDAS 2.0 framework. Pseudonymity by default,
   identification by choice.
 
 - **A verification registry** where attestation providers (telecom operators, email
@@ -133,7 +133,7 @@ TARIDE is structured as a foundation to ensure that the protocol remains:
   from civil society, academia, industry, and government. No single
   interest group controls decision-making.
 
-- **Aligned with European values.** Anonymity by default, privacy by
+- **Aligned with European values.** Pseudonymity by default, privacy by
   design, data sovereignty, and user autonomy are architectural
   principles, not afterthoughts. The protocol does not require personal
   identification. The foundation is established in the Netherlands,
@@ -172,7 +172,7 @@ The DID standard (W3C) ensures interoperability with other identity systems, inc
 
 ## 2. Verification layer
 
-Credentials are issued by trusted institutions and cryptographically signed, time-bound, and revocable. They come in two categories, reflecting the protocol’s principle of anonymity by default.
+Credentials are issued by trusted institutions and cryptographically signed, time-bound, and revocable. They come in two categories, reflecting the protocol’s principle of pseudonymity by default.
 
 ![](images/taride_credential_chain.svg)
 
@@ -261,7 +261,7 @@ Credentials can be revoked at any time by the attestation provider that issued t
 
 ## 3. Reputation layer
 
-End users contribute feedback on communications from DIDs that have opted into visibility, typically businesses and institutions that want to build a public trust profile. The reputation layer creates a decentralised quality signal comparable to consumer review systems. It operates exclusively on DIDs with identity credentials: anonymous DIDs that have only a verification credential are not subject to reputation scoring. Reputation attaches to the combination of DID and instance, not to the attestation provider. No reputation data is collected about individuals. Users who submit feedback remain anonymous, and no user profiles, behavioural scores, or personal ratings exist within the system. Spam detection for unverified or anonymous instances is an application-layer function, outside the scope of the protocol. The aggregation algorithm weights recent feedback more heavily and includes safeguards against coordinated manipulation.
+End users contribute feedback on communications from DIDs that have opted into visibility, typically businesses and institutions that want to build a public trust profile. The reputation layer creates a decentralised quality signal comparable to consumer review systems. It operates exclusively on DIDs with identity credentials: pseudonymous DIDs that have only a verification credential are not subject to reputation scoring. Reputation attaches to the combination of DID and instance, not to the attestation provider. No reputation data is collected about individuals. Users who submit feedback remain anonymous, and no user profiles, behavioural scores, or personal ratings exist within the system. Spam detection for unverified or unregistered instances is an application-layer function, outside the scope of the protocol. The aggregation algorithm weights recent feedback more heavily and includes safeguards against coordinated manipulation.
 
 ### Reputation data architecture
 
@@ -522,7 +522,7 @@ The trust signal is an optional credential attribute. A DID without a provider e
 
 **Application-level measures.** Beyond the protocol, applications can implement their own safeguards: device fingerprinting (distinct from user identification), rate limiting on new account creation, minimum verification periods before a new DID is treated as active, and behavioural analysis. These measures are application-layer decisions, not protocol rules, but the protocol is designed to support them by providing the necessary signals.
 
-The underlying design principle is that the protocol makes reputation evasion visible and expensive rather than impossible. Perfect sybil resistance would require mandatory identification, which would violate the core commitment to anonymity by default. The chosen approach, time as the primary trust signal, layered with optional linkage and transparency, achieves a practical balance: evasion remains technically possible but economically unattractive.
+The underlying design principle is that the protocol makes reputation evasion visible and expensive rather than impossible. Perfect sybil resistance would require mandatory identification, which would violate the core commitment to pseudonymity by default. The chosen approach, time as the primary trust signal, layered with optional linkage and transparency, achieves a practical balance: evasion remains technically possible but economically unattractive.
 
 # Use cases
 
@@ -556,7 +556,7 @@ A verified business (ING Bank) calls a Calmido user.
 | 5      | User (optional) | After the call: marks it as trusted, spam, or fraud.                                                                         | App (database)                         |
 | 6      | App (Calmido)   | Periodically aggregates user feedback and submits summarised reputation data to the resolver network.                          | Resolver network (reputation)          |
 
-*An unverified number shows: “Unknown - not verified.” An anonymous verified number shows: “Verified - no identity disclosed.” The user decides.*
+*An unverified number shows: “Unknown - not verified.” A pseudonymous verified number shows: “Verified - no identity disclosed.” The user decides.*
 
 ## Use case 3: number portability
 
@@ -632,7 +632,71 @@ In the Netherlands specifically, Vereniging COIN, the cooperative association of
 
 TARIDE builds on all of this, extending it from a set of individual telecom APIs and national coordination mechanisms to a broader, user-sovereign, pan-European trust protocol for all digital communications.
 
-This is not merely a technical distinction. It represents a fundamentally different approach to trust infrastructure: publicly governed, anonymous by default, and designed to verify communications without surveilling citizens.
+This is not merely a technical distinction. It represents a fundamentally different approach to trust infrastructure: publicly governed, pseudonymous by default, and designed to verify communications without surveilling citizens.
+
+# Data protection and GDPR
+
+The TARIDE protocol processes pseudonymous data, not anonymous data in the legal sense. A DID linked to a phone number (E.164 instance) at a telecom provider constitutes a personal data point under GDPR Article 4(1), because the provider can identify the natural person behind it. The fact that the Foundation itself cannot identify the person is irrelevant: if any party in the ecosystem can, the data is personal data and the full GDPR regime applies.
+
+This distinction matters. Earlier versions of this document used the term "anonymity by default." The correct characterisation is **pseudonymity by default**: the protocol applies technical and organisational measures to ensure that identification is only possible for authorised parties (notably the attestation provider and, through lawful procedures, law enforcement). These are security measures under GDPR Article 32, not anonymisation measures. Anonymisation in the legal sense would require that re-identification is irreversibly excluded for all parties, which is inherently impossible when a telecom provider maintains the link between a DID and a subscriber account.
+
+## Controller responsibility
+
+The Foundation determines the purposes and means of data processing within the protocol: it defines what DIDs are, how they relate to instances, what credentials are issued, and under what rules. Under GDPR Article 4(7), this makes the Foundation a data controller, regardless of whether it processes personal data itself.
+
+This follows the precedent set by the Belgian Data Protection Authority's decision on IAB Europe (2022, upheld by the Court of Justice of the EU in 2024), in which IAB Europe was found to be a controller in relation to the TCF consent string. IAB Europe argued, as TARIDE might, that it merely defined a framework and did not itself process personal data. The court rejected this argument: defining the purposes and means is sufficient.
+
+In practice, the Foundation is likely a **joint controller** (Article 26) together with attestation providers, and potentially with cache node operators, depending on the degree of discretion they exercise. Each party's responsibilities must be defined in a joint controller arrangement that is transparent to data subjects.
+
+## Data subject rights
+
+The Foundation must organise the ecosystem such that GDPR data subject rights can be exercised effectively:
+
+- **Right to information** (Articles 13-14). Data subjects must be informed about the processing of their data, including the identity of controllers, purposes, legal basis, recipients, and retention periods. This requires a clear privacy notice that covers the full protocol ecosystem.
+
+- **Right of access** (Article 15). A data subject can request confirmation of whether their data is processed and obtain a copy. The Foundation must establish processes to handle such requests, coordinating with attestation providers where necessary.
+
+- **Right to rectification** (Article 16). If a DID-instance association is incorrect, the data subject has the right to correction.
+
+- **Right to erasure** (Article 17). This is the most complex obligation for a blockchain-based protocol. On-chain data (DID registrations, credential hashes, timestamps) is immutable by design. The Foundation must address this tension through architectural choices: storing only cryptographic commitments on-chain (not personal data), maintaining all linkable data off-chain in the resolver network where it can be deleted, and ensuring that on-chain hashes become meaningless once the off-chain data they reference is removed. A Data Protection Impact Assessment must specifically analyse whether this approach satisfies the right to erasure in practice.
+
+- **Right to object** (Article 21). Data subjects may object to processing. The protocol must support DID deactivation and unlinking of instances as a practical implementation of this right.
+
+## Compliance obligations
+
+The following must be in place before production deployment:
+
+- **Data Protection Impact Assessment** (Article 35). Large-scale processing of pseudonymous identifiers linked to communication metadata requires a DPIA. This should be conducted during the pilot phase and updated as the protocol evolves.
+
+- **Joint controller arrangements** (Article 26) between the Foundation and attestation providers, defining each party's obligations, particularly regarding data subject rights.
+
+- **Data processing agreements** (Article 28) with cache node operators and any other parties that process personal data on behalf of the controllers.
+
+- **Records of processing activities** (Article 30) maintained by the Foundation and each participating controller.
+
+- **Privacy by design documentation** (Article 25). The architectural choices that minimise personal data processing (off-chain storage, cryptographic commitments, pseudonymous identifiers) should be documented as privacy-by-design measures.
+
+## GDPR governance responsibility matrix
+
+The following table maps each GDPR obligation to the responsible party within the protocol ecosystem.
+
+| Obligation | Foundation | Attestation provider | Cache node operator | Application | Credential issuer |
+|---|---|---|---|---|---|
+| **GDPR role** | Joint controller (art. 26) | Joint controller (art. 26) | Processor (art. 28) | Independent controller | Independent controller |
+| **Legal basis determination** | Defines protocol-level legal basis | Determines basis for subscriber data | Per processing agreement | Determines basis for app-level data | Determines basis for credential data |
+| **Privacy notice** (art. 13-14) | Publishes protocol-level notice; coordinates ecosystem-wide transparency | Informs subscribers about DID-instance processing | Covered by processing agreement | Informs users about app-level processing | Informs credential holders |
+| **Right of access** (art. 15) | Single point of contact; coordinates with attestation providers | Responds for subscriber-linked data | Assists per processing agreement | Responds for app-level data | Responds for credential data |
+| **Right to rectification** (art. 16) | Coordinates correction of DID-instance associations | Corrects verification credentials | Propagates corrections | Corrects app-level data | Corrects issued credentials |
+| **Right to erasure** (art. 17) | Coordinates DID deactivation; ensures off-chain data deletion renders on-chain hashes meaningless | Revokes credentials; deletes subscriber-DID linkage | Purges cached data per instruction | Deletes app-level user data | Revokes and deletes credentials |
+| **Right to object** (art. 21) | Facilitates DID deactivation and instance unlinking | Processes objections to credential processing | N/A (processor) | Processes objections to app-level processing | Processes objections to credential use |
+| **DPIA** (art. 35) | Conducts protocol-level DPIA | Conducts DPIA for credential issuance at scale | Covered by Foundation DPIA | Conducts app-level DPIA | Conducts DPIA if large-scale |
+| **Processing agreements** | Establishes joint controller arrangement (art. 26) with attestation providers; processing agreements (art. 28) with cache nodes | Signs joint controller arrangement with Foundation | Signs processing agreement with Foundation | Signs protocol access terms | Signs credential issuance terms |
+| **Records of processing** (art. 30) | Maintains for protocol operations | Maintains for credential operations | Maintains for caching operations | Maintains for app operations | Maintains for issuance operations |
+| **Data breach notification** (art. 33-34) | Notifies supervisory authority and coordinates ecosystem response | Notifies for breaches in credential systems | Notifies Foundation (processor obligation) | Notifies for app-level breaches | Notifies for credential system breaches |
+
+## International applicability
+
+GDPR applies to the protocol's operations within the EU. Equivalent regimes apply worldwide: the UK GDPR, Brazil's LGPD, South Africa's POPIA, and others impose similar obligations on pseudonymous data processing. The Foundation's compliance framework must be designed to scale internationally as the protocol expands beyond Europe.
 
 # Relationship to Calmido
 
@@ -905,5 +969,7 @@ Amsterdam, the Netherlands
 # Version history
 
 **v0.3 → v0.4 (March 2026).** Renamed Verification layer to Registration layer and Credential layer to Verification layer to better reflect what each layer does. Replaced credential age with two core time dimensions (DID age, association age) plus a separate metadata field (last resolver change). Updated all diagrams accordingly. Added positioning relative to GSMA Open Gateway, CAMARA API ecosystem, and TM Forum. Added Vereniging COIN as ecosystem context for the Netherlands pilot market.
+
+**v0.5 → v0.51 (April 2026).** Incorporated privacy officer feedback. Corrected terminology throughout: replaced legally inaccurate "anonymity/anonymous" with "pseudonymity/pseudonymous" where referring to the protocol's data classification (retained "anonymous" only for telecom-specific usage such as CLIR and prepaid activation, and for statistical aggregation). Added new section "Data protection and GDPR" covering: pseudonymisation vs anonymisation distinction, controller responsibility (with IAB Europe/TCF precedent), joint controller and processor obligations, data subject rights (including right-to-erasure tension with blockchain immutability), DPIA requirement, and international applicability. Added GDPR governance responsibility matrix.
 
 **v0.4 → v0.5 (March 2026).** Split the resolver role into two distinct functions: attestation providers (credential issuance, renewal, revocation) and cache nodes (lookup serving, data distribution). Updated terminology throughout the document: "resolver" is now either "attestation provider" or "cache node" depending on context; "resolver network" retained as the collective term for the full infrastructure layer. Renamed metadata field last_resolver_change to last_attestation_provider_change. Added attestation provider registry and automatic attestation provider detection subsections to the resolver layer. Added organisation_affiliation credential type to the verification layer. Added verified logo as optional identity credential. Updated architecture diagram to reflect the attestation provider and cache node separation. Added cache node operator row to the stakeholder responsibilities table. Moved reputation data off-chain: scores are now maintained in the resolver network with periodic cryptographic commitments on-chain, replacing the previous model of writing aggregated scores directly to the blockchain. Added reputation data architecture and application incentive for reputation contribution subsections. Added application registration section with UUID-based identification, participation tiers (read-only and contributing), revenue-sharing mechanism for reputation contributors, and enforcement via UUID revocation.

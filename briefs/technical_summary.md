@@ -1,12 +1,12 @@
 # TARIDE — Technical Protocol Summary
 
-*Extracted from the [foundation document](../taride_foundation.md) v0.5, March 2026. For review by the DID/SSI community.*
+*Extracted from the [foundation document](../taride_foundation.md) v0.51, April 2026. For review by the DID/SSI community.*
 
 ## What TARIDE is
 
 An open protocol for verified digital communications. Combines decentralised identifiers, verifiable credentials, a distributed resolver network, and a reputation layer to provide real-time trust profiles for communication instances (phone numbers, email addresses, messaging handles).
 
-**Core principle:** Anonymity by default, identification by choice. Verification credentials confirm that an instance is registered to an active account without revealing the holder's identity.
+**Core principle:** Pseudonymity by default, identification by choice. Verification credentials confirm that an instance is registered to an active account without revealing the holder's identity.
 
 ## Core concepts
 
