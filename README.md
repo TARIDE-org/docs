@@ -39,10 +39,4 @@ feedback/
   responses/                      One file per respondent (added as received)
 ```
 
-## How we work
-
-We use AI tooling as part of our workflow. All output is reviewed, verified, and owned by the human team 🧍🏼🧍🏽‍♀️.
-
-We are transparent about this because a trust protocol demands honest practices from its own foundation.
-
 Published under CC BY 4.0 · [taride.org](https://taride.org)
