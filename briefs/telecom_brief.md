@@ -1,16 +1,16 @@
-# TARIDE — Technical Brief for Telecom Providers
+# TARIDE: Technical Brief for Telecom Providers
 
 *Extracted from the [foundation document](../taride_foundation.md) v0.51, April 2026*
 
 ## What TARIDE is
 
-TARIDE is an open protocol for verified digital communications. When someone receives a call, the protocol confirms that the caller's phone number is registered to an active account at a telecom provider — without revealing the caller's identity.
+TARIDE is an open protocol for verified digital communications. When someone receives a call, the protocol confirms that the caller's phone number is registered to an active account at a telecom provider, without revealing the caller's identity.
 
 The protocol does not replace telecom infrastructure. It adds a verification layer on top of existing networks. Phone calls are established as usual. TARIDE is not in the signalling path.
 
 ## The role of the telecom provider
 
-Telecom providers are **attestation providers** in the TARIDE protocol. They are the only parties that can authoritatively confirm that a specific phone number is registered to a specific account. This makes telecom participation foundational — without attestation providers, the protocol cannot issue credentials.
+Telecom providers are **attestation providers** in the TARIDE protocol. They are the only parties that can authoritatively confirm that a specific phone number is registered to a specific account. This makes telecom participation foundational: without attestation providers, the protocol cannot issue credentials.
 
 ### What an attestation provider does
 
@@ -23,9 +23,9 @@ Telecom providers are **attestation providers** in the TARIDE protocol. They are
    - Last SIM swap timestamp
    - Last number reassignment
 
-3. **Revokes credentials.** When a number is disconnected, ported out, or flagged for abuse, the attestation provider revokes the credential. Revocation propagates through the resolver network in real time — all connected applications immediately see the change.
+3. **Revokes credentials.** When a number is disconnected, ported out, or flagged for abuse, the attestation provider revokes the credential. Revocation propagates through the resolver network in real time; all connected applications immediately see the change.
 
-4. **Handles number portability.** When a subscriber ports to a new provider, the old provider revokes its credential. The new provider issues a fresh one. The subscriber's DID (decentralised identifier) and reputation are unchanged — only the attestation provider changes.
+4. **Handles number portability.** When a subscriber ports to a new provider, the old provider revokes its credential. The new provider issues a fresh one. The subscriber's DID (decentralised identifier) and reputation are unchanged; only the attestation provider changes.
 
 ### What an attestation provider does NOT do
 
@@ -42,7 +42,7 @@ The protocol is designed to consume existing CAMARA APIs as verification inputs:
 
 | CAMARA API | Role in TARIDE |
 |---|---|
-| **Number Verification** | Continuous silent re-authentication — confirms the number is still active and on the same SIM without user interaction |
+| **Number Verification** | Continuous silent re-authentication, confirms the number is still active and on the same SIM without user interaction |
 | **SIM Swap** | Populates the `last_sim_swap` metadata field in the verification credential |
 | **Number Recycling** | Populates the `last_number_reassignment` metadata field; triggers credential lifecycle events |
 | **KYC / Identity** | Optional input for enhanced identity credentials (subscriber-consented) |
@@ -55,8 +55,8 @@ In the Netherlands, COIN already operates the infrastructure that maps closely t
 
 | COIN function | TARIDE equivalent |
 |---|---|
-| Number portability database | Automatic attestation provider detection — routing verification requests to the correct operator |
-| CAMARA Discovery Service | Attestation provider registry — declaring which provider is authoritative for which number ranges |
+| Number portability database | Automatic attestation provider detection, routing verification requests to the correct operator |
+| CAMARA Discovery Service | Attestation provider registry, declaring which provider is authoritative for which number ranges |
 | SMS Sender ID Register | Analogous verification concept, extended to all channels |
 | Cross-operator fraud prevention | Credential revocation propagation; reputation layer |
 
@@ -90,9 +90,9 @@ The DID (subscriber's protocol identity) persists across all these events. Reput
 
 The protocol adopts the GSMA's proposed distinction for mobile numbers as verifiable credentials:
 
-**Contract owner credential** — confirms the DID holder is the registered contract owner. Relevant for lifecycle events (SIM replacement, porting, contract changes).
+**Contract owner credential**: confirms the DID holder is the registered contract owner. Relevant for lifecycle events (SIM replacement, porting, contract changes).
 
-**End user credential** — confirms the DID holder is the actual user of the device and number. May differ from the contract owner (family plans, corporate subscriptions). Can be silently re-authenticated via the mobile network.
+**End user credential**: confirms the DID holder is the actual user of the device and number. May differ from the contract owner (family plans, corporate subscriptions). Can be silently re-authenticated via the mobile network.
 
 A single DID can hold multiple credentials (dual-SIM, multiple subscriptions). Each is independently issued and revocable.
 

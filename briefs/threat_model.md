@@ -1,4 +1,4 @@
-# TARIDE — Threat Model
+# TARIDE: Threat Model
 
 *Extracted from the [foundation document](../taride_foundation.md) v0.51, April 2026. For technical review by security researchers.*
 
@@ -33,7 +33,7 @@ The protocol relies on the following assumptions. Each is a potential attack sur
 **Attack:** Create many DIDs to spam, build fake reputation, or abandon identities with poor reputation.
 
 **Protocol defenses:**
-- *Time-as-trust:* Two independent timestamps — DID age (on-chain, immutable) and instance-DID association age (tracked by attestation provider). Both reset to zero on a new identity. No attacker can fake time.
+- *Time-as-trust:* Two independent timestamps: DID age (on-chain, immutable) and instance-DID association age (tracked by attestation provider). Both reset to zero on a new identity. No attacker can fake time.
 - *One-instance-one-DID:* A phone number can only be linked to one DID. To associate it with a new DID, the old link must be severed first. No parallel identity building.
 - *Optional provider trust signal:* Telecom providers can add an endorsement to the credential (comparable to a blue checkmark). Adds weight without revealing identity.
 
@@ -81,7 +81,7 @@ The protocol relies on the following assumptions. Each is a potential attack sur
 - App vulnerabilities that expose signing operations
 
 **Open questions:**
-- What is the key recovery model? If a user loses their device, how do they regain control of their DID? The foundation document mentions the EU Digital Identity Wallet as a future portable container — what is the interim solution?
+- What is the key recovery model? If a user loses their device, how do they regain control of their DID? The foundation document mentions the EU Digital Identity Wallet as a future portable container; what is the interim solution?
 - What is the key rotation model? Can a DID holder rotate their key pair without creating a new DID?
 - How are keys handled in multi-device scenarios (phone + tablet, dual-SIM)?
 
@@ -96,8 +96,8 @@ The protocol relies on the following assumptions. Each is a potential attack sur
 - Credential status is verifiable against on-chain anchors
 
 **Attack surfaces:**
-- Compromised attestation provider signing key — can issue arbitrary credentials
-- Colluding attestation provider — issues credentials for numbers the subscriber doesn't own
+- Compromised attestation provider signing key: can issue arbitrary credentials
+- Colluding attestation provider: issues credentials for numbers the subscriber doesn't own
 - Credential replay within validity window after revocation but before propagation
 - Forged credential metadata (account age, registration type) if the provider is the sole source of truth
 
@@ -130,7 +130,7 @@ The protocol relies on the following assumptions. Each is a potential attack sur
 - What is the realistic anonymity set? If a DID is linked to a phone number and an email address, how many users share that combination?
 - The foundation document mentions zero-knowledge proofs for the pilot phase. Which properties need ZK protection? Credential verification without revealing the DID? Reputation queries without revealing the queried instance?
 - What privacy guarantees do cache node operators have? Can a cache node operator perform traffic analysis on queries?
-- How does the protocol prevent a "reverse lookup" — given a DID, enumerate all linked instances?
+- How does the protocol prevent a "reverse lookup" (given a DID, enumerate all linked instances)?
 
 ### 6. Resolver network attacks
 

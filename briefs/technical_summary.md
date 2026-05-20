@@ -1,4 +1,4 @@
-# TARIDE — Technical Protocol Summary
+# TARIDE: Technical Protocol Summary
 
 *Extracted from the [foundation document](../taride_foundation.md) v0.51, April 2026. For review by the DID/SSI community.*
 
@@ -22,7 +22,7 @@ An open protocol for verified digital communications. Combines decentralised ide
 
 ### 1. Registration
 
-DID holders generate a cryptographic key pair. Public key registered on-chain as a DID. Private key stored in device secure enclave. The DID is pseudonymous — no inherent link to any personal information.
+DID holders generate a cryptographic key pair. Public key registered on-chain as a DID. Private key stored in device secure enclave. The DID is pseudonymous, with no inherent link to any personal information.
 
 In practice, an application (e.g., Calmido) or the future EU Digital Identity Wallet handles key generation, DID registration, and instance linking. No wallets, seed phrases, or blockchain interactions visible to the user.
 
@@ -30,16 +30,16 @@ In practice, an application (e.g., Calmido) or the future EU Digital Identity Wa
 
 Two credential categories:
 
-**Mandatory — instance verification:**
+**Mandatory instance verification:**
 - Attestation provider confirms the instance is registered to the DID holder
 - No personal information disclosed
 - Two types for telephony (per GSMA proposal for eIDAS 2.0):
-  - *Contract owner credential* — DID holder is the paying customer
-  - *End user credential* — DID holder is the actual device user (may differ from contract owner)
+  - *Contract owner credential*: DID holder is the paying customer
+  - *End user credential*: DID holder is the actual device user (may differ from contract owner)
 - A single DID can hold multiple credentials (dual-SIM, multi-provider)
 - Each credential independently issued and revocable
 
-**Optional — identity and attestations:**
+**Optional identity and attestations:**
 - KvK (chamber of commerce) registration
 - Regulatory credentials (banking licence, healthcare registration)
 - Verified logo (inspired by BIMI, tied to trademark verification via VMC or EUIPO)
@@ -48,7 +48,7 @@ Two credential categories:
 **Continuous validation:**
 - Optional silent re-authentication via mobile network (CAMARA Number Verification API)
 - Each credential presentation can trigger real-time proof of SIM possession
-- Defends against SIM swap — re-authentication fails if SIM was swapped
+- Defends against SIM swap: re-authentication fails if SIM was swapped
 
 ### 3. Reputation
 
@@ -62,19 +62,19 @@ Two credential categories:
 ### 4. Consent
 
 Per-channel preferences set by the DID holder:
-- Open (accept all — default)
+- Open (accept all, default)
 - Verified (only from DIDs with active verification credential)
 - Established (minimum DID age + association age threshold)
 - Trusted (positive reputation or identity credentials)
 - Contacts only (maximum restriction)
 
-Stored in resolver network (off-chain). Enforcement is at the application layer — the protocol stores and serves preferences but does not block communication.
+Stored in resolver network (off-chain). Enforcement is at the application layer; the protocol stores and serves preferences but does not block communication.
 
 ### 5. Resolver network
 
 Distributed infrastructure with two distinct roles:
-- **Attestation providers** — issue/revoke credentials, maintain instance-DID associations
-- **Cache nodes** — serve trust profiles to applications (<500ms), verify against on-chain commitments
+- **Attestation providers**: issue/revoke credentials, maintain instance-DID associations
+- **Cache nodes**: serve trust profiles to applications (<500ms), verify against on-chain commitments
 
 Follows the DNS model: multiple independent operators, no single point of failure. Any party meeting technical and governance requirements can operate a cache node.
 

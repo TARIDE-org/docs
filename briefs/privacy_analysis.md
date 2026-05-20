@@ -1,4 +1,4 @@
-# TARIDE — Privacy Analysis
+# TARIDE: Privacy Analysis
 
 *Extracted from the [foundation document](../taride_foundation.md) v0.51, April 2026. For review by privacy advocates and digital rights organisations.*
 
@@ -18,24 +18,24 @@ The protocol enables any party to verify that a communication (call, email, mess
 
 | Data | Location | Who controls it | Visibility |
 |---|---|---|---|
-| **DID (public key + creation timestamp)** | On-chain | DID holder created it; immutable once registered | Public — anyone can see that a DID exists and when it was created |
+| **DID (public key + creation timestamp)** | On-chain | DID holder created it; immutable once registered | Public, anyone can see that a DID exists and when it was created |
 | **Private key** | Device secure enclave | DID holder exclusively | Never leaves the device |
 | **Instance-DID association** (e.g., phone number X belongs to DID Y) | Resolver network (off-chain) | Attestation provider maintains it; DID holder initiated it | Queryable by connected applications via cache nodes |
 | **Verification credential** (number is registered to an active account) | On-chain (anchor/hash), full credential off-chain | Issued by attestation provider, held by DID holder | Credential status is public; full credential details served by cache nodes |
 | **Credential metadata** (account age, registration type, SIM swap timestamp) | Part of verification credential | Attestation provider provides it | Served to querying applications as part of trust profile |
-| **Identity credentials** (KvK registration, banking licence, verified logo) | On-chain (anchor/hash), full credential off-chain | Issued by credential issuer, held by DID holder — **opt-in only** | Only present if the DID holder chose to add them |
-| **Organisation affiliation** | Off-chain credential | Issued by organisation's DID to employee's DID — revocable | Visible to querying applications if the employee consents |
+| **Identity credentials** (KvK registration, banking licence, verified logo) | On-chain (anchor/hash), full credential off-chain | Issued by credential issuer, held by DID holder, **opt-in only** | Only present if the DID holder chose to add them |
+| **Organisation affiliation** | Off-chain credential | Issued by organisation's DID to employee's DID, revocable | Visible to querying applications if the employee consents |
 | **Reputation scores** | Resolver network (off-chain), periodic commitment hash on-chain | Aggregated from contributing applications | Only for DIDs that opted into visibility (typically businesses) |
-| **Individual user feedback** | Originating application only | The application | Never leaves the app — only aggregated scores are submitted to the resolver network |
+| **Individual user feedback** | Originating application only | The application | Never leaves the app, only aggregated scores are submitted to the resolver network |
 | **Consent preferences** | Resolver network (off-chain) | DID holder sets and modifies them | Queryable by applications to determine if communication is welcome |
 | **Application UUID** | Foundation registry | Foundation issues and can revoke | Infrastructure-level; not visible to end users |
 
 ### What is NOT stored
 
-- Names, addresses, or any personal information — not on-chain, not in the resolver network
-- Phone numbers are not stored on-chain — only the cryptographic association between a DID and an instance exists in the resolver network
-- Individual user feedback — stays in the originating app
-- Call records, message content, communication history — the protocol verifies identity, not content
+- Names, addresses, or any personal information: not on-chain, not in the resolver network
+- Phone numbers are not stored on-chain; only the cryptographic association between a DID and an instance exists in the resolver network
+- Individual user feedback stays in the originating app
+- Call records, message content, communication history: the protocol verifies identity, not content
 
 ## On-chain footprint analysis
 
@@ -102,13 +102,13 @@ A single DID can hold multiple instances across channels (phone number + email +
 
 | | TARIDE | Truecaller | Hiya | STIR/SHAKEN |
 |---|---|---|---|---|
-| **Identification required** | No — pseudonymity by default | Yes — name attached to number via crowdsourced data | Yes — caller ID database | No — verifies network path, not holder |
+| **Identification required** | No, pseudonymity by default | Yes, name attached to number via crowdsourced data | Yes, caller ID database | No, verifies network path, not holder |
 | **Personal data collected** | No PII stored by protocol | Contact books uploaded, names/numbers aggregated | Caller ID databases, user reports | Carrier-level data |
-| **User consent for data sharing** | Opt-in for identity, opt-in for reputation visibility | Implicit — installing the app uploads your contacts | Implicit — carrier-side integration | No end-user involvement |
+| **User consent for data sharing** | Opt-in for identity, opt-in for reputation visibility | Implicit, installing the app uploads your contacts | Implicit, carrier-side integration | No end-user involvement |
 | **Who controls the identity** | DID holder (self-sovereign) | Truecaller (centralised database) | Hiya (centralised database) | Carrier |
-| **Data monetisation** | No — foundation model, protocol fees only | Yes — core business model | Yes — B2B data licensing | No |
+| **Data monetisation** | No, foundation model, protocol fees only | Yes, core business model | Yes, B2B data licensing | No |
 | **On-chain data** | DIDs, credential hashes, reputation commitments | N/A | N/A | N/A |
-| **Decentralised** | Yes — multiple attestation providers and cache nodes | No — single company | No — single company | Partially — per-carrier implementation |
+| **Decentralised** | Yes, multiple attestation providers and cache nodes | No, single company | No, single company | Partially, per-carrier implementation |
 
 ## Technical questions for review
 
