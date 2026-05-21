@@ -114,7 +114,7 @@ The document lists what the Foundation does: develops protocol, maintains specif
 - DevOps/SRE (infrastructure, PoC operations)
 - Community management (open-source, documentation)
 
-The document names two individuals (Martin Voorzanger & Leonard Wolters) and says "TARIDE Foundation (in formation)." The gap between two founders and the operational requirements is significant. Key questions:
+The document names two individuals (Martin Voorzanger & Leonard Wolters)." The gap between two founders and the operational requirements is significant. Key questions:
 
 1. How many FTEs does the Foundation need per phase?
 2. What is the hiring plan and budget?
@@ -215,13 +215,11 @@ The document targets pan-European scale by 2031 across 27 Member States. This im
 
 ## Open Questions
 
-1. **Who governs the Foundation until the board is formed?** During "in formation" status, who makes decisions? The founders? Under what authority?
-2. **What legal form is the Foundation?** Dutch "stichting"? If so, stichtingen have specific legal constraints (no members, board-governed) that differ from a "vereniging" or other forms.
-3. **How are attestation providers removed from the network?** If a telecom exits the market, goes bankrupt, or becomes non-compliant — what is the process and who inherits their responsibilities?
-4. **What is the support model for end users?** If a user's DID is incorrectly marked or their trust profile is wrong, who do they contact? The Foundation? The app developer? The attestation provider?
-5. **How is the Foundation accountable to the public?** Published financials? Annual reports? Public board meetings? For an entity claiming to build public infrastructure, transparency is a governance requirement.
-6. **What is the process for adding a new communication channel?** When email or WhatsApp support is added, who defines the attestation provider requirements for that channel? How are new channel-specific credential types approved?
-7. **Is there a formal relationship between Foundation governance and Calmido's product roadmap?** If Calmido decides to implement a protocol feature before it's formally specified, does that create a de facto standard?
+1. **How are attestation providers removed from the network?** If a telecom exits the market, goes bankrupt, or becomes non-compliant — what is the process and who inherits their responsibilities?
+2. **What is the support model for end users?** If a user's DID is incorrectly marked or their trust profile is wrong, who do they contact? The Foundation? The app developer? The attestation provider?
+3. **How is the Foundation accountable to the public?** Published financials? Annual reports? Public board meetings? For an entity claiming to build public infrastructure, transparency is a governance requirement.
+4. **What is the process for adding a new communication channel?** When email or WhatsApp support is added, who defines the attestation provider requirements for that channel? How are new channel-specific credential types approved?
+5. **Is there a formal relationship between Foundation governance and Calmido's product roadmap?** If Calmido decides to implement a protocol feature before it's formally specified, does that create a de facto standard?
 
 ---
 
