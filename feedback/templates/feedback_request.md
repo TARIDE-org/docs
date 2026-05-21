@@ -25,4 +25,3 @@ Dear [name],
 Thank you for your time.
 
 Martin Voorzanger & Leonard Wolters
-TARIDE Foundation (in formation)
