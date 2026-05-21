@@ -932,7 +932,6 @@ Concrete opportunities for involvement:
 **Contact**
 
 Martin Voorzanger & Leonard Wolters
-TARIDE Foundation (in formation)
 
 Amsterdam, the Netherlands
 
